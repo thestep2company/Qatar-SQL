@@ -1,0 +1,7 @@
+C:\repos\MachineIndex\MachineIndex\bin\Production\Model.asdatabase
+C:\repos\MachineIndex\MachineIndex\bin\Production\Model.deploymenttargets
+C:\repos\MachineIndex\MachineIndex\bin\Production\Model.deploymentoptions
+C:\repos\MachineIndex\MachineIndex\obj\Production\MachineIndex.smproj.CoreCompileInputs.cache
+C:\repos\MachineIndex\MachineIndex\obj\Production\Model.asdatabase
+C:\repos\MachineIndex\MachineIndex\obj\Production\Model.deploymentoptions
+C:\repos\MachineIndex\MachineIndex\obj\Production\Model.deploymenttargets

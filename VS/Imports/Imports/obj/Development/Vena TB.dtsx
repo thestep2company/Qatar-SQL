@@ -1,0 +1,955 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/11/2022 11:34:04 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{313FA1AD-1906-4A00-B17E-DD766A6DDCBD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Vena TB"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{4EE6B634-F166-48A9-A3F7-CD05C133F293}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{AB74D570-B6A6-4C45-98D2-50BC0DDE0F68}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\QATAR\F$\VenaDataLoad\LoadFile\S2TB.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Account"
+              DTS:DTSID="{32FB4DE2-752C-43D2-B3A8-9BAFE92604F5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Entity"
+              DTS:DTSID="{0D63B46D-D2EB-40EA-84D0-EB2D2495AB0F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Department"
+              DTS:DTSID="{C1B5B071-0C92-40B7-8123-1F21A4504577}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Location"
+              DTS:DTSID="{6E440A31-587B-4CBE-AF0F-1CB842D716F8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Vendor"
+              DTS:DTSID="{F30E112E-490E-4CE2-B369-BF9CCB57757F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Placeholder 3"
+              DTS:DTSID="{B7204249-73FD-4E68-88CD-693F532F879B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Placeholder 4"
+              DTS:DTSID="{FD291010-21E6-48AD-B75F-4EC83472C065}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Year"
+              DTS:DTSID="{FD3CA2B2-6A2A-4DEB-A961-C0DB30831D85}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Period"
+              DTS:DTSID="{8D581C9E-CFCD-40AE-B2F3-2F6E78A34B3B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Scenario"
+              DTS:DTSID="{1D9A246B-8F7E-4DE0-83A0-39CCF8EEBF7C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Currency"
+              DTS:DTSID="{A851AC7D-521F-4F56-8015-E3752E5C305C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Measure"
+              DTS:DTSID="{5756234A-DD05-4572-86C6-1195CF1F3425}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_Value"
+              DTS:DTSID="{983336C0-80A2-4978-BBC0-399DB69A1009}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7E9388D7-5F37-434C-8B9D-47C00B84F788}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Vena TB-{7E9388D7-5F37-434C-8B9D-47C00B84F788}SourceConnectionOLEDB;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{0CDA53EF-C2E9-4171-A0B1-BECCEB306A3B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_ACCOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_ACCOUNT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Account]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ACCOUNT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_ENTITY]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_ENTITY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Entity]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ENTITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_DEPARTMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_DEPARTMENT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Department]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_LOCATION]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_LOCATION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Location]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_LOCATION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_YEAR]"
+                      cachedDataType="numeric"
+                      cachedName="_YEAR"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Year]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_YEAR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_PERIOD]"
+                      cachedDataType="numeric"
+                      cachedName="_PERIOD"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Period]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PERIOD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_PLACEHOLDER 3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="_PLACEHOLDER 3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Placeholder 3]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_PLACEHOLDER 4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="_PLACEHOLDER 4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Placeholder 4]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_SCENARIO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="_SCENARIO"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Scenario]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_SCENARIO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_CURRENCY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="_CURRENCY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Currency]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_CURRENCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_MEASURE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="_MEASURE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Measure]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_MEASURE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_VALUE]"
+                      cachedDataType="r8"
+                      cachedName="_VALUE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Value]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VALUE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].Columns[_VENDOR]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="_VENDOR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Vendor]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VENDOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Account]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Account" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Entity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Entity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Department]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Department" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Location]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Placeholder 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Placeholder 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Placeholder 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Placeholder 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Year]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Period]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Period" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Scenario]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Scenario" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Currency]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Currency" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Measure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Measure" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Value]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Value" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[_Vendor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="_Vendor" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - VennaTB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - VennaTB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OUTPUT].[VenaTBVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - VennaTB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ENTITY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ENTITY]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ENTITY]"
+                      name="_ENTITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_LOCATION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_LOCATION]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_LOCATION]"
+                      name="_LOCATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_DEPARTMENT]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]"
+                      name="_DEPARTMENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ACCOUNT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNT]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ACCOUNT]"
+                      name="_ACCOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VENDOR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VENDOR]"
+                      name="_VENDOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 3]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]"
+                      name="_PLACEHOLDER 3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 4]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]"
+                      name="_PLACEHOLDER 4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_YEAR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_YEAR]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_YEAR]"
+                      name="_YEAR"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PERIOD]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PERIOD]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_PERIOD]"
+                      name="_PERIOD"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_SCENARIO]"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_SCENARIO]"
+                      name="_SCENARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_CURRENCY]"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_CURRENCY]"
+                      name="_CURRENCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_MEASURE]"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_MEASURE]"
+                      name="_MEASURE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VALUE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_VALUE]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_VALUE]"
+                      name="_VALUE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ACTIVITY]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ACTIVITY]"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].Columns[_ACTIVITY]"
+                      name="_ACTIVITY"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ENTITY]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ENTITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_LOCATION]"
+                      dataType="wstr"
+                      length="25"
+                      name="_LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_DEPARTMENT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_DEPARTMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR]"
+                      dataType="wstr"
+                      length="240"
+                      name="_VENDOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_YEAR]"
+                      dataType="numeric"
+                      name="_YEAR"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_PERIOD]"
+                      dataType="numeric"
+                      name="_PERIOD"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="_SCENARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_MEASURE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_VALUE]"
+                      dataType="r8"
+                      name="_VALUE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output].ExternalColumns[_ACTIVITY]"
+                      dataType="r8"
+                      name="_ACTIVITY" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ENTITY]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ENTITY]"
+                      name="_ENTITY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_LOCATION]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_LOCATION]"
+                      name="_LOCATION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_DEPARTMENT]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_DEPARTMENT]"
+                      name="_DEPARTMENT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ACCOUNT]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ACCOUNT]"
+                      name="_ACCOUNT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_VENDOR]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_VENDOR]"
+                      name="_VENDOR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 3]"
+                      name="_PLACEHOLDER 3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 4]"
+                      name="_PLACEHOLDER 4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_YEAR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_YEAR]"
+                      name="_YEAR"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PERIOD]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_PERIOD]"
+                      name="_PERIOD"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_SCENARIO]"
+                      name="_SCENARIO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_CURRENCY]"
+                      name="_CURRENCY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_MEASURE]"
+                      name="_MEASURE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_VALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_VALUE]"
+                      name="_VALUE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ACTIVITY]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[_ACTIVITY]"
+                      name="_ACTIVITY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - VennaTB.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute Process Task"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Execute Process Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{15004038-FC4C-4DAE-B0CB-6F7A34ED8556}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute Process Task"
+      DTS:TaskContact="Execute Process Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="\\qatar\F$\VenaDataLoad\Script\tbUpload.bat" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D6540C1-766A-4C75-960D-7375720E250E}"
+      DTS:From="Package\Data Flow Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute Process Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="5.5,5.5" />
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Execute Process Task"
+          TopLeft="56,112" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="85.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="60.5,64.5"
+              Start="0,0"
+              End="60.5,57">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.25"
+                    Point2="0,32.25"
+                    Point3="4,32.25" />
+                  <mssgle:LineSegment
+                    End="56.5,32.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56.5,32.25"
+                    Point2="60.5,32.25"
+                    Point3="60.5,36.25" />
+                  <mssgle:LineSegment
+                    End="60.5,57" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,41.6"
+          Id="Package\Data Flow Task 1\Source - VennaTB"
+          TopLeft="17.5,6.5" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Data Flow Task 1\Flat File Destination"
+          TopLeft="92,114" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="99.5,48.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.5,65.5"
+              Start="0,0"
+              End="78.5,58">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.75"
+                    Point2="0,32.75"
+                    Point3="4,32.75" />
+                  <mssgle:LineSegment
+                    End="74.5,32.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.5,32.75"
+                    Point2="78.5,32.75"
+                    Point3="78.5,36.75" />
+                  <mssgle:LineSegment
+                    End="78.5,58" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - VennaTB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

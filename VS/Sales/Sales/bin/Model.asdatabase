@@ -1,0 +1,2754 @@
+{
+  "name": "Sales",
+  "compatibilityLevel": 1500,
+  "model": {
+    "name": "Production",
+    "culture": "en-US",
+    "discourageImplicitMeasures": true,
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/ ;Sales",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": ".",
+            "database": "Operations"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Fiscal Calendar",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "sortByColumn": "Quarter Sort"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month",
+            "sortByColumn": "Month Sort"
+          },
+          {
+            "name": "Week",
+            "dataType": "string",
+            "sourceColumn": "Week",
+            "sortByColumn": "Week Sort"
+          },
+          {
+            "name": "Day",
+            "dataType": "string",
+            "sourceColumn": "Day",
+            "sortByColumn": "Day Sort"
+          },
+          {
+            "name": "Week Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Week Sort"
+          },
+          {
+            "name": "Date ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "DateKey",
+            "formatString": "yyyy-MM-dd",
+            "sortByColumn": "Date ID",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeCustom\"><DateTimes><DateTime LCID=\"1033\" Group=\"ShortDate\" FormatString=\"yyyy-MM-dd\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Month Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Month Sort"
+          },
+          {
+            "name": "Quarter Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Quarter Sort"
+          },
+          {
+            "name": "Day Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Day Sort"
+          },
+          {
+            "name": "Half",
+            "dataType": "string",
+            "sourceColumn": "Half"
+          },
+          {
+            "name": "Half Seasonlity",
+            "dataType": "string",
+            "sourceColumn": "Half Seasonlity"
+          },
+          {
+            "name": "Quarter Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Quarter Seasonality"
+          },
+          {
+            "name": "Month Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Month Seasonality"
+          },
+          {
+            "name": "Week Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Week Seasonality",
+            "sortByColumn": "Week Seasonality Sort"
+          },
+          {
+            "name": "Day Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Day Seasonality",
+            "sortByColumn": "Day Seasonality Sort"
+          },
+          {
+            "name": "Day of Week",
+            "dataType": "string",
+            "sourceColumn": "Day of Week",
+            "sortByColumn": "Day of Week Sort"
+          },
+          {
+            "name": "Day of Week Sort",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Day of Week Sort"
+          },
+          {
+            "name": "Week Seasonality Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Week Seasonality Sort"
+          },
+          {
+            "name": "Day Seasonality Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Day Seasonality Sort"
+          },
+          {
+            "name": "TYDay",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "TYDay"
+          },
+          {
+            "name": "LYDay",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LYDay"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_CalendarFiscal = Source{[Schema=\"Dim\",Item=\"CalendarFiscal\"]}[Data]",
+                "in",
+                "    Dim_CalendarFiscal"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Fiscal Calendar",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              },
+              {
+                "name": "Date",
+                "ordinal": 3,
+                "column": "Date"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Time Series Bridge",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "TimeSeriesID",
+            "dataType": "int64",
+            "sourceColumn": "TimeSeriesID"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "sourceColumn": "DateID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_M2MTimeSeries = Source{[Schema=\"Dim\",Item=\"M2MTimeSeries\"]}[Data]",
+                "in",
+                "    Dim_M2MTimeSeries"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Time Series",
+        "columns": [
+          {
+            "name": "Time Series ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "TimeSeriesID",
+            "sortByColumn": "Time Series Sort"
+          },
+          {
+            "name": "Time Series Key",
+            "dataType": "string",
+            "sourceColumn": "TimeSeriesKey",
+            "sortByColumn": "Time Series Sort"
+          },
+          {
+            "name": "Time Series Name",
+            "dataType": "string",
+            "sourceColumn": "TimeSeriesName",
+            "sortByColumn": "Time Series Sort"
+          },
+          {
+            "name": "Time Series Desc",
+            "dataType": "string",
+            "sourceColumn": "TimeSeriesDesc"
+          },
+          {
+            "name": "Time Series Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "TimeSeriesSort"
+          },
+          {
+            "name": "Time Series",
+            "dataType": "string",
+            "sourceColumn": "TimeSeriesType",
+            "sortByColumn": "Time Series Type Sort"
+          },
+          {
+            "name": "Time Series Type Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "TimeSeriesTypeSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_TimeSeries = Source{[Schema=\"Dim\",Item=\"TimeSeries\"]}[Data]",
+                "in",
+                "    Dim_TimeSeries"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Metrics",
+        "isHidden": true,
+        "defaultDetailRowsDefinition": {
+          "expression": [
+            "SELECTCOLUMNS(",
+            "    'Metrics'",
+            "    ,\"Location\",RELATED('Location'[Location Name])",
+            "    ,\"Sale Type\",RELATED('Sale Type'[Sale Type Name])    ",
+            "    ,\"Customer Name\",RELATED('Customer'[Customer Desc])",
+            "    ,\"Product Desc\",RELATED('Product'[Product Desc])",
+            "    --,\"Sales $\",RELATED('Sales'[$ACCT_USD])",
+            "    --,\"Sales Units\",RELATED('Sales'[$QTY])",
+            ")"
+          ]
+        },
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values1",
+            "dataType": "boolean",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values1]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values2",
+            "dataType": "boolean",
+            "isNameInferred": false,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values2]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values3",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values3]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values4",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values4]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values5",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values5]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values6",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values6]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values7",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values7]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values8",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values8]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values9",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values9]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values10",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values10]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values11",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values11]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values12",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values12]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values13",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values13]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values14",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values14]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values15",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values15]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values16",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values16]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values17",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values17]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values18",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values18]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values19",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values19]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values20",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values20]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values21",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values21]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values22",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values22]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values23",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values23]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values24",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values24]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values25",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values25]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values26",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values26]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values27",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values27]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values28",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values28]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values29",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values29]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values30",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values30]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values31",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values31]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values32",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values32]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values33",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values33]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values34",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values34]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values35",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values35]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values36",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values36]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values37",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values37]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values38",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values38]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values39",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values39]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values40",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values40]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "DATATABLE (\"Values1\", BOOLEAN, \"Values2\", BOOLEAN, \"Values3\", BOOLEAN, \"Values4\", BOOLEAN, \"Values5\", BOOLEAN, \"Values6\", BOOLEAN, \"Values7\", BOOLEAN, \"Values8\", BOOLEAN, \"Values9\", BOOLEAN, \"Values10\", BOOLEAN, \"Values11\", BOOLEAN, \"Values12\", BOOLEAN, \"Values13\", BOOLEAN, \"Values14\", BOOLEAN, \"Values15\", BOOLEAN, \"Values16\", BOOLEAN, \"Values17\", BOOLEAN, \"Values18\", BOOLEAN, \"Values19\", BOOLEAN, \"Values20\", BOOLEAN, \"Values21\", BOOLEAN, \"Values22\", BOOLEAN, \"Values23\", BOOLEAN, \"Values24\", BOOLEAN, \"Values25\", BOOLEAN, \"Values26\", BOOLEAN, \"Values27\", BOOLEAN, \"Values28\", BOOLEAN, \"Values29\", BOOLEAN, \"Values30\", BOOLEAN, \"Values31\", BOOLEAN, \"Values32\", BOOLEAN, \"Values33\", BOOLEAN, \"Values34\", BOOLEAN, \"Values35\", BOOLEAN, \"Values36\", BOOLEAN, \"Values37\", BOOLEAN, \"Values38\", BOOLEAN, \"Values39\", BOOLEAN, \"Values40\", BOOLEAN, {{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Finished Goods Less Orders Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Quantity])"
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Finished Goods Less Forecast Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Quantity]) "
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Finished Goods Less Orders & Forecast Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Quantity]) "
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Estimated Finished Goods Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              " ",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Total On Hand Qty",
+            "expression": [
+              " ",
+              "Calculate (",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Yellow Wrapped Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]) , --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Reboxed Qty",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              " ",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Forecast Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Quantity])",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Sales Orders Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Quantity])",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Production Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=6),[$Inventory Quantity])",
+              " ",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Production Non Firm Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=7),[$Inventory Quantity])",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Purchase Order Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=8),[$Inventory Quantity])",
+              " ",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Work Order Qty",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=9),[$Inventory Quantity])",
+              " ",
+              "",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Net Available Qty",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=6),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=7),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=8),[$Inventory Quantity]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=9),[$Inventory Quantity])",
+              " "
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Inventory Qty",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),Inventory[Inventory Quantity]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              ""
+            ],
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Qty"
+          },
+          {
+            "name": "Estimated Finished Goods $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]) , --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Finished Goods Less Orders $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+",
+              "CALCULATE( ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Cost])"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Finished Goods Less Forecast $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+",
+              "CALCULATE( ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Cost]) "
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Finished Goods Less Orders & Forecast $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+",
+              "CALCULATE( ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Cost]) "
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Total On Hand $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Yellow Wrapped $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Reboxed $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Forecast $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales Orders $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Production $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=6),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Production Non Firm $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=7),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Purchase Order $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=8),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Work Order $",
+            "expression": [
+              " ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=9),[$Inventory Cost]) ",
+              "",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Net Available $",
+            "expression": [
+              " ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              "+ ",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=2),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+",
+              "CALCULATE( ",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=3),[$Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ") ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=4),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=5),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=6),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=7),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=8),[$Inventory Cost]) ",
+              "+ SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=9),[$Inventory Cost]) "
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Inventory $",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "SUMX(FILTER(Inventory, Inventory[InventoryTypeID]=1),Inventory[Inventory Cost]), --base metric",
+              "Filter ('Fiscal Calendar', 'Fiscal Calendar'[Date ID] = Max ( 'Inventory'[DateID] ) ) --last non empty",
+              ")",
+              ""
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Margin $",
+            "expression": " Sales[Sales $]-Sales[Cost of Goods Sold]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Sales",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Margin %",
+            "expression": " DIVIDE(Sales[Sales $]-Sales[Cost of Goods Sold],Sales[Sales $])",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "displayFolder": "Sales"
+          },
+          {
+            "name": "Inventory Feed Qty",
+            "expression": " 'Inventory Feed'[Feed Quantity]",
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Feed"
+          },
+          {
+            "name": "Inventory Feed Unit Price",
+            "expression": " 'Inventory Feed'[Feed Unit Price]",
+            "formatString": "#,0",
+            "displayFolder": "Inventory\\Feed"
+          },
+          {
+            "name": "Sales",
+            "expression": "Sales[Sales $]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Sales",
+            "kpi": {
+              "targetDescription": "Sales Forecast",
+              "targetExpression": "'Metrics'[Sales Forecast]",
+              "targetFormatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Metrics'[Sales]/'Metrics'[_Sales Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.85,-1,",
+                "\t                If(x<1,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "85"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "100"
+                }
+              ]
+            },
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales Qty",
+            "expression": "Sales[Sales Units]",
+            "formatString": "#,0",
+            "displayFolder": "Sales"
+          },
+          {
+            "name": "COGS",
+            "expression": "Sales[Cost of Goods Sold]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Sales",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales Forecast",
+            "expression": "'Order Curve'[Sales Forecast $]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Sales",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales % of Forecast",
+            "expression": "DIVIDE(Sales[Sales $],'Order Curve'[Sales Forecast $])-1",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "displayFolder": "Sales"
+          },
+          {
+            "name": "Sales Var to Forecast",
+            "expression": "Sales[Sales $]-'Order Curve'[Sales Forecast $]",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "displayFolder": "Sales",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Same Period",
+        "calculationGroup": {
+          "calculationItems": [
+            {
+              "name": "LY",
+              "expression": [
+                "IF (",
+                "    HASONEVALUE ( 'Fiscal Calendar'[Year] ),",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        FILTER (",
+                "            ALL ( 'Fiscal Calendar' ),",
+                "            'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] ) - 1",
+                "                && CONTAINS(",
+                "                    VALUES ( 'Fiscal Calendar' ),",
+                "                    'Fiscal Calendar'[LYDay],",
+                "                    'Fiscal Calendar'[TYDay]",
+                "                )",
+                "        )",
+                "    ),",
+                "    BLANK()",
+                ")"
+              ]
+            },
+            {
+              "name": "TY",
+              "expression": "SELECTEDMEASURE()"
+            },
+            {
+              "name": "TY-LY",
+              "expression": [
+                "SELECTEDMEASURE() - ",
+                "IF (",
+                "    HASONEVALUE ( 'Fiscal Calendar'[Year] ),",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        FILTER (",
+                "            ALL ( 'Fiscal Calendar' ),",
+                "            'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] ) - 1",
+                "                && CONTAINS(",
+                "                    VALUES ( 'Fiscal Calendar' ),",
+                "                    'Fiscal Calendar'[LYDay],",
+                "                    'Fiscal Calendar'[TYDay]",
+                "                )",
+                "        )",
+                "    ),",
+                "    BLANK ()",
+                ")"
+              ]
+            },
+            {
+              "name": "TY % LY",
+              "expression": [
+                "",
+                "    DIVIDE(",
+                "        SELECTEDMEASURE()",
+                "        -IF (",
+                "            HASONEVALUE ( 'Fiscal Calendar'[Year] ),",
+                "            CALCULATE (",
+                "                SELECTEDMEASURE(),",
+                "                FILTER (",
+                "                    ALL ( 'Fiscal Calendar' ),",
+                "                    'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] ) - 1",
+                "                        && CONTAINS(",
+                "                            VALUES ( 'Fiscal Calendar' ),",
+                "                            'Fiscal Calendar'[LYDay],",
+                "                            'Fiscal Calendar'[TYDay]",
+                "                        )",
+                "                )",
+                "            ),",
+                "            BLANK ()",
+                "        )",
+                "        ,",
+                "        IF (",
+                "            HASONEVALUE ( 'Fiscal Calendar'[Year] ),",
+                "            CALCULATE (",
+                "                SELECTEDMEASURE(),",
+                "                FILTER (",
+                "                    ALL ( 'Fiscal Calendar' ),",
+                "                    'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] ) - 1",
+                "                        && CONTAINS(",
+                "                            VALUES ( 'Fiscal Calendar' ),",
+                "                            'Fiscal Calendar'[LYDay],",
+                "                            'Fiscal Calendar'[TYDay]",
+                "                        )",
+                "                )",
+                "            ),",
+                "            BLANK ()",
+                "        )",
+                "    ) ",
+                "",
+                ""
+              ],
+              "formatStringDefinition": {
+                "expression": "\"0.0%\""
+              }
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Last Year",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculationGroup 1",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Time Intelligence",
+        "calculationGroup": {
+          "precedence": 1,
+          "calculationItems": [
+            {
+              "name": "MTD",
+              "expression": [
+                "IF (",
+                "    HASONEVALUE ( 'Fiscal Calendar'[Year] )",
+                "        && HASONEVALUE ('Fiscal Calendar'[Month] ),",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        FILTER (",
+                "            ALL ( 'Fiscal Calendar' ),",
+                "            'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] )",
+                "                && 'Fiscal Calendar'[Month] = VALUES ( 'Fiscal Calendar'[Month] )",
+                "                && 'Fiscal Calendar'[Date] <= MAX ( 'Fiscal Calendar'[Date] )",
+                "        )",
+                "    ),",
+                "    BLANK ()",
+                ")"
+              ]
+            },
+            {
+              "name": "QTD",
+              "expression": [
+                "IF (",
+                "    HASONEVALUE ( 'Fiscal Calendar'[Year] )",
+                "        && HASONEVALUE ('Fiscal Calendar'[Quarter] ),",
+                "    CALCULATE (",
+                "        SELECTEDMEASURE(),",
+                "        FILTER (",
+                "            ALL ( 'Fiscal Calendar' ),",
+                "            'Fiscal Calendar'[Year] = VALUES ( 'Fiscal Calendar'[Year] )",
+                "                && 'Fiscal Calendar'[Quarter] = VALUES ( 'Fiscal Calendar'[Quarter] )",
+                "                && 'Fiscal Calendar'[Date] <= MAX ( 'Fiscal Calendar'[Date] )",
+                "        )",
+                "    ),",
+                "    BLANK ()",
+                ")"
+              ]
+            }
+          ]
+        },
+        "columns": [
+          {
+            "name": "Time Series",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculationGroup 1",
+            "mode": "import",
+            "source": {
+              "type": "calculationGroup"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Geography",
+        "columns": [
+          {
+            "name": "GeographyID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GeographyID"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_Geography = Source{[Schema=\"Dim\",Item=\"Geography\"]}[Data]",
+                "in",
+                "    Dim_Geography"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "sourceColumn": "CustomerKey",
+            "sortByColumn": "CustomerSort"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "CustomerDesc",
+            "dataType": "string",
+            "sourceColumn": "CustomerDesc",
+            "sortByColumn": "CustomerSort"
+          },
+          {
+            "name": "CustomerSort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "CustomerSort"
+          },
+          {
+            "name": "SALES_CHANNEL_CODE",
+            "dataType": "string",
+            "sourceColumn": "SALES_CHANNEL_CODE"
+          },
+          {
+            "name": "INSIDE_REP",
+            "dataType": "string",
+            "sourceColumn": "INSIDE_REP"
+          },
+          {
+            "name": "TRAFFIC_PERSON",
+            "dataType": "string",
+            "sourceColumn": "TRAFFIC_PERSON"
+          },
+          {
+            "name": "LABEL_FORMAT",
+            "dataType": "string",
+            "sourceColumn": "LABEL_FORMAT"
+          },
+          {
+            "name": "BUSINESS_SEGMENT",
+            "dataType": "string",
+            "sourceColumn": "BUSINESS_SEGMENT"
+          },
+          {
+            "name": "CUSTOMER_GROUP",
+            "dataType": "string",
+            "sourceColumn": "CUSTOMER_GROUP"
+          },
+          {
+            "name": "FINANCE_CHANNEL",
+            "dataType": "string",
+            "sourceColumn": "FINANCE_CHANNEL"
+          },
+          {
+            "name": "TERRITORY",
+            "dataType": "string",
+            "sourceColumn": "TERRITORY"
+          },
+          {
+            "name": "SALESPERSON",
+            "dataType": "string",
+            "sourceColumn": "SALESPERSON"
+          },
+          {
+            "name": "ORDER_TYPE",
+            "dataType": "string",
+            "sourceColumn": "ORDER_TYPE"
+          },
+          {
+            "name": "DEMAND_CLASS_CODE",
+            "dataType": "string",
+            "sourceColumn": "DEMAND_CLASS_CODE"
+          },
+          {
+            "name": "DEMAND_CLASS_NAME",
+            "dataType": "string",
+            "sourceColumn": "DEMAND_CLASS_NAME"
+          },
+          {
+            "name": "FINANCE_REPORTING_CHANNEL",
+            "dataType": "string",
+            "sourceColumn": "FINANCE_REPORTING_CHANNEL"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_CustomerMaster = Source{[Schema=\"Dim\",Item=\"CustomerMaster\"]}[Data]",
+                "in",
+                "    Dim_CustomerMaster"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "Product Key",
+            "dataType": "string",
+            "sourceColumn": "ProductKey",
+            "sortByColumn": "Product Sort"
+          },
+          {
+            "name": "Product Name",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "Product Desc",
+            "dataType": "string",
+            "sourceColumn": "ProductDesc",
+            "sortByColumn": "Product Sort"
+          },
+          {
+            "name": "Product Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductSort"
+          },
+          {
+            "name": "UOM",
+            "dataType": "string",
+            "sourceColumn": "UOM"
+          },
+          {
+            "name": "Item Type",
+            "dataType": "string",
+            "sourceColumn": "Item Type"
+          },
+          {
+            "name": "SOIP Family",
+            "dataType": "string",
+            "sourceColumn": "SOIP Family"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category"
+          },
+          {
+            "name": "Sub Category",
+            "dataType": "string",
+            "sourceColumn": "SubCategory"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand"
+          },
+          {
+            "name": "Inventory Status Code",
+            "dataType": "string",
+            "sourceColumn": "Inventory Status Code"
+          },
+          {
+            "name": "Country of Origin",
+            "dataType": "string",
+            "sourceColumn": "Country of Origin"
+          },
+          {
+            "name": "Part Class",
+            "dataType": "string",
+            "sourceColumn": "Part Class"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_ProductMaster = Source{[Schema=\"Dim\",Item=\"ProductMaster\"]}[Data]",
+                "in",
+                "    Dim_ProductMaster"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Location",
+        "columns": [
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "Location Key",
+            "dataType": "string",
+            "sourceColumn": "LocationKey",
+            "sortByColumn": "Sort"
+          },
+          {
+            "name": "Location Name",
+            "dataType": "string",
+            "sourceColumn": "LocationName"
+          },
+          {
+            "name": "Location Desc",
+            "dataType": "string",
+            "sourceColumn": "LocationDesc",
+            "sortByColumn": "Sort"
+          },
+          {
+            "name": "Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Sort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_Location = Source{[Schema=\"Dim\",Item=\"Location\"]}[Data]",
+                "in",
+                "    Dim_Location"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Revenue Type",
+        "columns": [
+          {
+            "name": "RevenueID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RevenueID"
+          },
+          {
+            "name": "Revenue Key",
+            "dataType": "string",
+            "sourceColumn": "RevenueKey"
+          },
+          {
+            "name": "Revenue Name",
+            "dataType": "string",
+            "sourceColumn": "RevenueName",
+            "sortByColumn": "RevenueSort"
+          },
+          {
+            "name": "RevenueSort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RevenueSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_RevenueType = Source{[Schema=\"Dim\",Item=\"RevenueType\"]}[Data]",
+                "in",
+                "    Dim_RevenueType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Inventory",
+        "columns": [
+          {
+            "name": "PlantID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PlantID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "$Inventory Cost",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Inventory Cost",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "InventoryTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "InventoryTypeID"
+          },
+          {
+            "name": "$Inventory Quantity",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "InventoryCodeID",
+            "dataType": "int64",
+            "sourceColumn": "InventoryCodeID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Fact_Inventory = Source{[Schema=\"Fact\",Item=\"Inventory\"]}[Data]",
+                "in",
+                "    Fact_Inventory"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Inventory Cost",
+            "expression": "SUM([$Inventory Cost])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "displayFolder": "Inventory\\Cost",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Inventory Quantity",
+            "expression": "SUM([$Inventory Quantity])",
+            "formatString": "#,0",
+            "isHidden": true,
+            "displayFolder": "Inventory\\Qty"
+          }
+        ]
+      },
+      {
+        "name": "Inventory Feed",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "$FeedQuantity",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "$FeedUnitPrice",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "Discontinued",
+            "dataType": "boolean",
+            "isHidden": true,
+            "sourceColumn": "Discontinued"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "sourceColumn": "DateID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Fact_InventoryFeed = Source{[Schema=\"Fact\",Item=\"InventoryFeed\"]}[Data]",
+                "in",
+                "    Fact_InventoryFeed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Feed Quantity",
+            "expression": "SUM([$FeedQuantity])",
+            "formatString": "#,0",
+            "isHidden": true
+          },
+          {
+            "name": "Feed Unit Price",
+            "expression": "SUM([$FeedUnitPrice])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Inventory Type",
+        "columns": [
+          {
+            "name": "InventoryTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "InventoryTypeID"
+          },
+          {
+            "name": "Inventory Type Name",
+            "dataType": "string",
+            "sourceColumn": "InventoryTypeName",
+            "sortByColumn": "InventoryTypeSort"
+          },
+          {
+            "name": "InventoryTypeSort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "InventoryTypeSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_InventoryType = Source{[Schema=\"Dim\",Item=\"InventoryType\"]}[Data]",
+                "in",
+                "    Dim_InventoryType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Hour",
+        "columns": [
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "isUnique": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "Hour Name",
+            "dataType": "string",
+            "sourceColumn": "HourName",
+            "sortByColumn": "Hour Sort"
+          },
+          {
+            "name": "Hour Desc",
+            "dataType": "string",
+            "sourceColumn": "HourDesc",
+            "sortByColumn": "Hour Sort"
+          },
+          {
+            "name": "Hour Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "HourSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_Hour = Source{[Schema=\"Dim\",Item=\"Hour\"]}[Data]",
+                "in",
+                "    Dim_Hour"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "defaultDetailRowsDefinition": {
+          "expression": [
+            "SELECTCOLUMNS(",
+            "    'Sales'",
+            "    ,\"Location\",RELATED('Location'[Location Name])",
+            "    ,\"Sale Type\",RELATED('Sale Type'[Sale Type Name])    ",
+            "    ,\"Customer Name\",RELATED('Customer'[Customer Desc])",
+            "    ,\"Product Desc\",RELATED('Product'[Product Desc])",
+            "    --,\"Sales $\",'Sales'[$ACCT_USD]",
+            "    --,\"Sales Units\",'Sales'[$QTY]",
+            ")"
+          ]
+        },
+        "columns": [
+          {
+            "name": "Order #",
+            "dataType": "double",
+            "sourceColumn": "ORDER_NUM"
+          },
+          {
+            "name": "ORDER_LINE",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ORDER_LINE"
+          },
+          {
+            "name": "RevenueID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RevenueID"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "GeographyID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GeographyID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "$ACCTD_USD",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ACCTD_USD"
+          },
+          {
+            "name": "$ENTERED_AMOUNT",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "ENTERED_AMOUNT"
+          },
+          {
+            "name": "$ITEM_FROZEN_COST",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "ITEM_FROZEN_COST"
+          },
+          {
+            "name": "$COGS_AMOUNT",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "COGS_AMOUNT"
+          },
+          {
+            "name": "$QTY",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "QTY"
+          },
+          {
+            "name": "SaleTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SaleTypeID"
+          },
+          {
+            "name": "DemandClassID",
+            "dataType": "int64",
+            "sourceColumn": "DemandClassID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Fact_Sales = Source{[Schema=\"Fact\",Item=\"Sales\"]}[Data]",
+                "in",
+                "    Fact_Sales"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales $",
+            "expression": "SUM([$ACCTD_USD])",
+            "isHidden": true
+          },
+          {
+            "name": "Cost of Goods Sold",
+            "expression": "SUM([$COGS_AMOUNT])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Entered Amount",
+            "expression": "SUM([$ENTERED_AMOUNT])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Item Frozen Cost",
+            "expression": "SUM([$ITEM_FROZEN_COST])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales Units",
+            "expression": "SUM([$QTY])",
+            "isHidden": true
+          }
+        ]
+      },
+      {
+        "name": "Sale Type",
+        "columns": [
+          {
+            "name": "SaleTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SaleTypeID"
+          },
+          {
+            "name": "Sale Type Name",
+            "dataType": "string",
+            "sourceColumn": "SaleTypeName"
+          },
+          {
+            "name": "SalesTypeDesc",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesTypeDesc"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_SaleType = Source{[Schema=\"Dim\",Item=\"SaleType\"]}[Data]",
+                "in",
+                "    Dim_SaleType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Inventory Code",
+        "columns": [
+          {
+            "name": "InventoryCodeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "InventoryCodeID"
+          },
+          {
+            "name": "Inventory Code Key",
+            "dataType": "string",
+            "sourceColumn": "InventoryCodeKey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_InventoryCode = Source{[Schema=\"Dim\",Item=\"InventoryCode\"]}[Data]",
+                "in",
+                "    Dim_InventoryCode"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Demand Class",
+        "columns": [
+          {
+            "name": "Demand Class ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DemandClassID"
+          },
+          {
+            "name": "Demand Class Key",
+            "dataType": "string",
+            "sourceColumn": "DemandClassKey"
+          },
+          {
+            "name": "Demand Class Name",
+            "dataType": "string",
+            "sourceColumn": "DemandClassName"
+          },
+          {
+            "name": "Demand Class Desc",
+            "dataType": "string",
+            "sourceColumn": "DemandClassDesc"
+          },
+          {
+            "name": "Customer Rank",
+            "dataType": "string",
+            "sourceColumn": "Customer Rank"
+          },
+          {
+            "name": "Customer Summary",
+            "dataType": "string",
+            "sourceColumn": "Customer Summary"
+          },
+          {
+            "name": "Finance Reporting Channel",
+            "dataType": "string",
+            "sourceColumn": "Finance Reporting Channel"
+          },
+          {
+            "name": "Customer Top Level",
+            "dataType": "string",
+            "sourceColumn": "Customer Top Level"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Dim_DemandClass = Source{[Schema=\"Dim\",Item=\"DemandClass\"]}[Data]",
+                "in",
+                "    Dim_DemandClass"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Order Curve",
+        "columns": [
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "DemandClassID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DemandClassID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "Sales",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "Sales"
+          },
+          {
+            "name": "$Sales Forecast",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "DerivedSales"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/ ;Sales\",",
+                "    Fact_OrderCurve = Source{[Schema=\"Fact\",Item=\"OrderCurve\"]}[Data]",
+                "in",
+                "    Fact_OrderCurve"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales Forecast $",
+            "expression": "SUM([$Sales Forecast])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "isHidden": true,
+            "displayFolder": "Sales",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "e5230f20-897e-4cd7-83e4-43fcfff15b70",
+        "fromTable": "Time Series Bridge",
+        "fromColumn": "TimeSeriesID",
+        "toTable": "Time Series",
+        "toColumn": "Time Series ID"
+      },
+      {
+        "name": "e8aa2b05-090f-482d-b0ad-8e3cb8789a64",
+        "fromTable": "Time Series Bridge",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "Date ID",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "685d6195-8f72-4fb4-9d25-589f44731315",
+        "fromTable": "Inventory",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "b0cb6a0d-a4a5-442b-b6d2-b9b601f4b93b",
+        "fromTable": "Inventory",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "fe1253ed-a086-4657-bf6c-6bfa660d2b00",
+        "fromTable": "Inventory",
+        "fromColumn": "PlantID",
+        "toTable": "Location",
+        "toColumn": "LocationID"
+      },
+      {
+        "name": "ce163263-2e00-4ef2-8344-d13ce69fa3c4",
+        "fromTable": "Inventory Feed",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "cfb9efcc-ac0b-4310-b4be-506ff0da3e89",
+        "fromTable": "Inventory Feed",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "a54fd73b-ccc6-4b04-b92f-070ab3413b3f",
+        "fromTable": "Inventory",
+        "fromColumn": "InventoryTypeID",
+        "toTable": "Inventory Type",
+        "toColumn": "InventoryTypeID"
+      },
+      {
+        "name": "951c2a67-1f49-49b6-b821-17fb17278992",
+        "fromTable": "Sales",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "7b038972-a284-414d-8bc8-d2183b970555",
+        "fromTable": "Sales",
+        "fromColumn": "GeographyID",
+        "toTable": "Geography",
+        "toColumn": "GeographyID"
+      },
+      {
+        "name": "0894bdc2-c287-4575-b892-5e3adc4d6254",
+        "fromTable": "Sales",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "c5cb11d1-07f5-4657-b357-1e67fc389a79",
+        "fromTable": "Sales",
+        "fromColumn": "LocationID",
+        "toTable": "Location",
+        "toColumn": "LocationID"
+      },
+      {
+        "name": "8144fd7c-d8eb-4f90-ae60-bf6f38196b09",
+        "fromTable": "Sales",
+        "fromColumn": "RevenueID",
+        "toTable": "Revenue Type",
+        "toColumn": "RevenueID"
+      },
+      {
+        "name": "83fe605e-60f2-4208-9730-e00da77243a1",
+        "fromTable": "Sales",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "fa2fd084-5975-4aa0-a1e3-c352763ad0da",
+        "fromTable": "Sales",
+        "fromColumn": "HourID",
+        "toTable": "Hour",
+        "toColumn": "HourID"
+      },
+      {
+        "name": "e1d1f8ff-238b-4491-8de7-436a8a4e0f2a",
+        "fromTable": "Sales",
+        "fromColumn": "SaleTypeID",
+        "toTable": "Sale Type",
+        "toColumn": "SaleTypeID"
+      },
+      {
+        "name": "296d1cac-b279-4d7c-8b4c-85b9c1679fbf",
+        "fromTable": "Inventory",
+        "fromColumn": "InventoryCodeID",
+        "toTable": "Inventory Code",
+        "toColumn": "InventoryCodeID"
+      },
+      {
+        "name": "e3e2c2c9-eed3-4735-a645-8a6741f7a40f",
+        "fromTable": "Sales",
+        "fromColumn": "DemandClassID",
+        "toTable": "Demand Class",
+        "toColumn": "Demand Class ID"
+      },
+      {
+        "name": "ecbe759b-8b42-4897-9215-19c90750dac1",
+        "fromTable": "Inventory Feed",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "49a4de70-51ff-420b-b4e1-220cfbcaeef0",
+        "fromTable": "Order Curve",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "Date ID"
+      },
+      {
+        "name": "087fb9c3-2168-4e14-919e-759e64701d58",
+        "fromTable": "Order Curve",
+        "fromColumn": "DemandClassID",
+        "toTable": "Demand Class",
+        "toColumn": "Demand Class ID"
+      },
+      {
+        "name": "47b84e67-6e64-463a-aa9a-600b0a973970",
+        "fromTable": "Order Curve",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "b7fb6ac3-57c2-4b7e-9478-3ca11d29ea3e",
+        "fromTable": "Order Curve",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Admin",
+        "modelPermission": "administrator",
+        "members": [
+          {
+            "memberName": "STEP2\\derek_a",
+            "memberId": "S-1-5-21-209193057-2653316314-1365489721-7487"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  }
+}

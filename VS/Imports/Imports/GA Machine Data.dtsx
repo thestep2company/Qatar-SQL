@@ -1,0 +1,768 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/12/2021 9:06:48 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{F1A8C2E4-EFB1-407A-B930-7B8B064A29F3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="GA Machine Data"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{CF25F8D6-319C-458F-B805-1AFB5F4A6012}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C96CBC7B-38B0-4B04-B8C1-AF42511721B8}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F3FAEAB7-C3CA-42FE-978A-412AE2AE15EF}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=ROTOLINE-M332\SQLExpress;User ID=m332_rotoline;Initial Catalog=FactoryTalk;Provider=SQLNCLI11.1;Auto Translate=false;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0S2K8V2+i0a2C3bWYMjw4AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABVU8z9KFQDYG/nYj+MBSBnAAAAAASAAACgAAAAEAAAAETaVHkvaT72g2Lf+YteBbsYAAAAPdo0AKh0u4h+tr8nEcijwHCeWBVle/42FAAAAHU76b/WvO3Je32En5QPUo9HdOrs</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{12F2EC41-70A2-445A-8051-2CAA672ECD29}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - vwRelatorioResumido"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwRelatorioResumido]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[DateAndTime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="DateAndTime"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DateAndTime]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DateAndTime]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[Carro]"
+                      cachedDataType="nText"
+                      cachedName="Carro"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Carro]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Carro]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[Receita]"
+                      cachedDataType="nText"
+                      cachedName="Receita"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Receita]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Receita]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[DataInicio]"
+                      cachedDataType="nText"
+                      cachedName="DataInicio"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DataInicio]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DataInicio]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[InicioForno]"
+                      cachedDataType="nText"
+                      cachedName="InicioForno"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[InicioForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[InicioForno]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[FimForno]"
+                      cachedDataType="nText"
+                      cachedName="FimForno"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[FimForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimForno]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[DuracaoForno]"
+                      cachedDataType="nText"
+                      cachedName="DuracaoForno"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoForno]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[SP_Temperatura]"
+                      cachedDataType="r8"
+                      cachedName="SP_Temperatura"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[SP_Temperatura]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[SP_Temperatura]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[FimCiclo]"
+                      cachedDataType="nText"
+                      cachedName="FimCiclo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[FimCiclo]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimCiclo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[DuracaoCiclo]"
+                      cachedDataType="nText"
+                      cachedName="DuracaoCiclo"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoCiclo]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoCiclo]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[Cozidos]"
+                      cachedDataType="nText"
+                      cachedName="Cozidos"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Cozidos]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Cozidos]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[DuracaoParada]"
+                      cachedDataType="nText"
+                      cachedName="DuracaoParada"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoParada]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoParada]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[Gas]"
+                      cachedDataType="r8"
+                      cachedName="Gas"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Gas]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Gas]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].Columns[Indice]"
+                      cachedDataType="i4"
+                      cachedName="Indice"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Indice]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Indice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DateAndTime]"
+                      dataType="dbTimeStamp"
+                      name="DateAndTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Carro]"
+                      dataType="nText"
+                      name="Carro" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Receita]"
+                      dataType="nText"
+                      name="Receita" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DataInicio]"
+                      dataType="nText"
+                      name="DataInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[InicioForno]"
+                      dataType="nText"
+                      name="InicioForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[FimForno]"
+                      dataType="nText"
+                      name="FimForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoForno]"
+                      dataType="nText"
+                      name="DuracaoForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[SP_Temperatura]"
+                      dataType="r8"
+                      name="SP_Temperatura" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[FimCiclo]"
+                      dataType="nText"
+                      name="FimCiclo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoCiclo]"
+                      dataType="nText"
+                      name="DuracaoCiclo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Cozidos]"
+                      dataType="nText"
+                      name="Cozidos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[DuracaoParada]"
+                      dataType="nText"
+                      name="DuracaoParada" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Gas]"
+                      dataType="r8"
+                      name="Gas" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input].ExternalColumns[Indice]"
+                      dataType="i4"
+                      name="Indice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - vwRelatorioResumido"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - vwRelatorioResumido"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[vwRelatorioResumido]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DateAndTime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DateAndTime]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DateAndTime]"
+                      name="DateAndTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Carro]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Carro]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Carro]"
+                      name="Carro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Receita]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Receita]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Receita]"
+                      name="Receita"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DataInicio]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DataInicio]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DataInicio]"
+                      name="DataInicio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[InicioForno]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[InicioForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[InicioForno]"
+                      name="InicioForno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimForno]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[FimForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimForno]"
+                      name="FimForno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoForno]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoForno]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoForno]"
+                      name="DuracaoForno"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[SP_Temperatura]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[SP_Temperatura]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[SP_Temperatura]"
+                      name="SP_Temperatura"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimCiclo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[FimCiclo]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[FimCiclo]"
+                      name="FimCiclo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoCiclo]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoCiclo]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoCiclo]"
+                      name="DuracaoCiclo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Cozidos]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Cozidos]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Cozidos]"
+                      name="Cozidos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoParada]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoParada]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[DuracaoParada]"
+                      name="DuracaoParada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Gas]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Gas]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Gas]"
+                      name="Gas"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Indice]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Indice]"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].Columns[Indice]"
+                      name="Indice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DateAndTime]"
+                      dataType="dbTimeStamp"
+                      name="DateAndTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Carro]"
+                      dataType="nText"
+                      name="Carro" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Receita]"
+                      dataType="nText"
+                      name="Receita" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DataInicio]"
+                      dataType="nText"
+                      name="DataInicio" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[InicioForno]"
+                      dataType="nText"
+                      name="InicioForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[FimForno]"
+                      dataType="nText"
+                      name="FimForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoForno]"
+                      dataType="nText"
+                      name="DuracaoForno" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[SP_Temperatura]"
+                      dataType="r8"
+                      name="SP_Temperatura" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[FimCiclo]"
+                      dataType="nText"
+                      name="FimCiclo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoCiclo]"
+                      dataType="nText"
+                      name="DuracaoCiclo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Cozidos]"
+                      dataType="nText"
+                      name="Cozidos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[DuracaoParada]"
+                      dataType="nText"
+                      name="DuracaoParada" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Gas]"
+                      dataType="r8"
+                      name="Gas" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output].ExternalColumns[Indice]"
+                      dataType="i4"
+                      name="Indice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DateAndTime]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DateAndTime]"
+                      name="DateAndTime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Carro]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Carro]"
+                      name="Carro" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Receita]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Receita]"
+                      name="Receita" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DataInicio]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DataInicio]"
+                      name="DataInicio" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[InicioForno]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[InicioForno]"
+                      name="InicioForno" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[FimForno]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[FimForno]"
+                      name="FimForno" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoForno]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoForno]"
+                      name="DuracaoForno" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[SP_Temperatura]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[SP_Temperatura]"
+                      name="SP_Temperatura" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[FimCiclo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[FimCiclo]"
+                      name="FimCiclo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoCiclo]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoCiclo]"
+                      name="DuracaoCiclo" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Cozidos]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Cozidos]"
+                      name="Cozidos" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoParada]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[DuracaoParada]"
+                      name="DuracaoParada" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Gas]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Gas]"
+                      name="Gas" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Indice]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[Indice]"
+                      name="Indice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - vwRelatorioResumido.Inputs[Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - vwRelatorioResumido.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{DC0E980A-F06E-4B4D-A821-8FBA7AD07F6C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C96CBC7B-38B0-4B04-B8C1-AF42511721B8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[vwRelatorioResumido]&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{AA6F69C9-C54C-4100-9448-4B5FC89AF00D\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{AA6F69C9-C54C-4100-9448-4B5FC89AF00D}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{AA6F69C9-C54C-4100-9448-4B5FC89AF00D}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task 1"
+          TopLeft="20.5,107.5" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Preparation SQL Task 1"
+          TopLeft="5.50000000000001,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[{AA6F69C9-C54C-4100-9448-4B5FC89AF00D\}]"
+          TopLeft="100.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Data Flow Task 1\Source - vwRelatorioResumido"
+          TopLeft="15.5,5.5" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\Data Flow Task 1\Destination - vwRelatorioResumido"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="127,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

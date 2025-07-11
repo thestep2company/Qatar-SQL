@@ -1,0 +1,1830 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/QATAR;Operations",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "QATAR",
+            "database": "Operations"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "Windows",
+          "kind": "SQL",
+          "path": "qatar;Operations",
+          "Username": "STEP2\\derek_a",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Forecast",
+        "columns": [
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "DemandClassID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DemandClassID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "SaleTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SaleTypeID"
+          },
+          {
+            "name": "Sales",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Sales"
+          },
+          {
+            "name": "DerivedSales",
+            "dataType": "double",
+            "sourceColumn": "DerivedSales"
+          },
+          {
+            "name": "DerivedCogs",
+            "dataType": "double",
+            "sourceColumn": "DerivedCogs"
+          },
+          {
+            "name": "DerivedGP",
+            "dataType": "double",
+            "sourceColumn": "DerivedGP"
+          },
+          {
+            "name": "DerivedUnits",
+            "dataType": "double",
+            "sourceColumn": "DerivedUnits"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    dbo_FactForecast = Source{[Schema=\"dbo\",Item=\"FactForecast\"]}[Data]",
+                "in",
+                "    dbo_FactForecast"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Forecast COGS $",
+            "expression": "SUM([DerivedCogs])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Forecast Gross Profit $",
+            "expression": "SUM([DerivedGP])"
+          },
+          {
+            "name": "Forecast Sales $",
+            "expression": "SUM([DerivedSales])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "string",
+            "sourceColumn": "CustomerKey"
+          },
+          {
+            "name": "CustomerName",
+            "dataType": "string",
+            "sourceColumn": "CustomerName"
+          },
+          {
+            "name": "CustomerDesc",
+            "dataType": "string",
+            "sourceColumn": "CustomerDesc"
+          },
+          {
+            "name": "CustomerSort",
+            "dataType": "string",
+            "sourceColumn": "CustomerSort"
+          },
+          {
+            "name": "SALES_CHANNEL_CODE",
+            "dataType": "string",
+            "sourceColumn": "SALES_CHANNEL_CODE"
+          },
+          {
+            "name": "INSIDE_REP",
+            "dataType": "string",
+            "sourceColumn": "INSIDE_REP"
+          },
+          {
+            "name": "TRAFFIC_PERSON",
+            "dataType": "string",
+            "sourceColumn": "TRAFFIC_PERSON"
+          },
+          {
+            "name": "LABEL_FORMAT",
+            "dataType": "string",
+            "sourceColumn": "LABEL_FORMAT"
+          },
+          {
+            "name": "BUSINESS_SEGMENT",
+            "dataType": "string",
+            "sourceColumn": "BUSINESS_SEGMENT"
+          },
+          {
+            "name": "CUSTOMER_GROUP",
+            "dataType": "string",
+            "sourceColumn": "CUSTOMER_GROUP"
+          },
+          {
+            "name": "FINANCE_CHANNEL",
+            "dataType": "string",
+            "sourceColumn": "FINANCE_CHANNEL"
+          },
+          {
+            "name": "TERRITORY",
+            "dataType": "string",
+            "sourceColumn": "TERRITORY"
+          },
+          {
+            "name": "SALESPERSON",
+            "dataType": "string",
+            "sourceColumn": "SALESPERSON"
+          },
+          {
+            "name": "ORDER_TYPE",
+            "dataType": "string",
+            "sourceColumn": "ORDER_TYPE"
+          },
+          {
+            "name": "DEMAND_CLASS_CODE",
+            "dataType": "string",
+            "sourceColumn": "DEMAND_CLASS_CODE"
+          },
+          {
+            "name": "DEMAND_CLASS_NAME",
+            "dataType": "string",
+            "sourceColumn": "DEMAND_CLASS_NAME"
+          },
+          {
+            "name": "FINANCE_REPORTING_CHANNEL",
+            "dataType": "string",
+            "sourceColumn": "FINANCE_REPORTING_CHANNEL"
+          },
+          {
+            "name": "FEED_DEMAND_CLASS_NAME",
+            "dataType": "string",
+            "sourceColumn": "FEED_DEMAND_CLASS_NAME"
+          },
+          {
+            "name": "FEED_CUSTOMER",
+            "dataType": "string",
+            "sourceColumn": "FEED_CUSTOMER"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    dbo_DimCustomerMaster = Source{[Schema=\"dbo\",Item=\"DimCustomerMaster\"]}[Data]",
+                "in",
+                "    dbo_DimCustomerMaster"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "SaleType",
+        "columns": [
+          {
+            "name": "SaleTypeID",
+            "dataType": "int64",
+            "sourceColumn": "SaleTypeID"
+          },
+          {
+            "name": "SaleTypeName",
+            "dataType": "string",
+            "sourceColumn": "SaleTypeName"
+          },
+          {
+            "name": "SalesTypeDesc",
+            "dataType": "int64",
+            "sourceColumn": "SalesTypeDesc"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    Dim_SaleType = Source{[Schema=\"Dim\",Item=\"SaleType\"]}[Data]",
+                "in",
+                "    Dim_SaleType"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DemandClass",
+        "columns": [
+          {
+            "name": "DemandClassID",
+            "dataType": "int64",
+            "sourceColumn": "DemandClassID"
+          },
+          {
+            "name": "DemandClassKey",
+            "dataType": "string",
+            "sourceColumn": "DemandClassKey"
+          },
+          {
+            "name": "DemandClassName",
+            "dataType": "string",
+            "sourceColumn": "DemandClassName"
+          },
+          {
+            "name": "DemandClassDesc",
+            "dataType": "string",
+            "sourceColumn": "DemandClassDesc"
+          },
+          {
+            "name": "Customer Rank",
+            "dataType": "string",
+            "sourceColumn": "Customer Rank"
+          },
+          {
+            "name": "Customer Summary",
+            "dataType": "string",
+            "sourceColumn": "Customer Summary"
+          },
+          {
+            "name": "Finance Reporting Channel",
+            "dataType": "string",
+            "sourceColumn": "Finance Reporting Channel"
+          },
+          {
+            "name": "Customer Top Level",
+            "dataType": "string",
+            "sourceColumn": "Customer Top Level"
+          },
+          {
+            "name": "Ecommerce Type",
+            "dataType": "string",
+            "sourceColumn": "Ecommerce Type"
+          },
+          {
+            "name": "Territory",
+            "dataType": "string",
+            "sourceColumn": "Territory"
+          },
+          {
+            "name": "Channel Code",
+            "dataType": "string",
+            "sourceColumn": "Channel Code"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    Dim_DemandClass = Source{[Schema=\"Dim\",Item=\"DemandClass\"]}[Data]",
+                "in",
+                "    Dim_DemandClass"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fiscal Calendar",
+        "columns": [
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "DateKey",
+            "dataType": "dateTime",
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year"
+          },
+          {
+            "name": "Half",
+            "dataType": "string",
+            "sourceColumn": "Half"
+          },
+          {
+            "name": "Half Seasonlity",
+            "dataType": "string",
+            "sourceColumn": "Half Seasonlity"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter"
+          },
+          {
+            "name": "Quarter Sort",
+            "dataType": "string",
+            "sourceColumn": "Quarter Sort"
+          },
+          {
+            "name": "Quarter Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Quarter Seasonality"
+          },
+          {
+            "name": "Month",
+            "dataType": "string",
+            "sourceColumn": "Month",
+            "sortByColumn": "Month Sort"
+          },
+          {
+            "name": "Month Sort",
+            "dataType": "string",
+            "sourceColumn": "Month Sort"
+          },
+          {
+            "name": "Month Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Month Seasonality"
+          },
+          {
+            "name": "Month Seasonality Sort",
+            "dataType": "string",
+            "sourceColumn": "Month Seasonality Sort"
+          },
+          {
+            "name": "Week",
+            "dataType": "string",
+            "sourceColumn": "Week",
+            "sortByColumn": "Week Sort"
+          },
+          {
+            "name": "Week Sort",
+            "dataType": "string",
+            "sourceColumn": "Week Sort"
+          },
+          {
+            "name": "Week Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Week Seasonality"
+          },
+          {
+            "name": "Week Seasonality Sort",
+            "dataType": "string",
+            "sourceColumn": "Week Seasonality Sort"
+          },
+          {
+            "name": "WeekNum",
+            "dataType": "int64",
+            "sourceColumn": "WeekNum"
+          },
+          {
+            "name": "Day",
+            "dataType": "string",
+            "sourceColumn": "Day"
+          },
+          {
+            "name": "Day Sort",
+            "dataType": "string",
+            "sourceColumn": "Day Sort"
+          },
+          {
+            "name": "Day Seasonality",
+            "dataType": "string",
+            "sourceColumn": "Day Seasonality"
+          },
+          {
+            "name": "Day Seasonality Sort",
+            "dataType": "string",
+            "sourceColumn": "Day Seasonality Sort"
+          },
+          {
+            "name": "Day of Week",
+            "dataType": "string",
+            "sourceColumn": "Day of Week"
+          },
+          {
+            "name": "Day of Week Sort",
+            "dataType": "int64",
+            "sourceColumn": "Day of Week Sort"
+          },
+          {
+            "name": "TYDay",
+            "dataType": "int64",
+            "sourceColumn": "TYDay"
+          },
+          {
+            "name": "LYDay",
+            "dataType": "int64",
+            "sourceColumn": "LYDay"
+          },
+          {
+            "name": "2LYDay",
+            "dataType": "int64",
+            "sourceColumn": "2LYDay"
+          },
+          {
+            "name": "Holiday",
+            "dataType": "boolean",
+            "sourceColumn": "Holiday"
+          },
+          {
+            "name": "WeekID",
+            "dataType": "int64",
+            "sourceColumn": "WeekID"
+          },
+          {
+            "name": "CurrentYear",
+            "dataType": "string",
+            "sourceColumn": "CurrentYear"
+          },
+          {
+            "name": "MonthID",
+            "dataType": "int64",
+            "sourceColumn": "MonthID"
+          },
+          {
+            "name": "CurrentMonthID",
+            "dataType": "int64",
+            "sourceColumn": "CurrentMonthID"
+          },
+          {
+            "name": "CurrentWeekID",
+            "dataType": "int64",
+            "sourceColumn": "CurrentWeekID"
+          },
+          {
+            "name": "$UseActual",
+            "dataType": "boolean",
+            "sourceColumn": "UseActual"
+          },
+          {
+            "name": "$UseForecast",
+            "dataType": "boolean",
+            "sourceColumn": "UseForecast"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    dbo_DimCalendarFiscal = Source{[Schema=\"dbo\",Item=\"DimCalendarFiscal\"]}[Data]",
+                "in",
+                "    dbo_DimCalendarFiscal"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Maximum of $UseActual",
+            "expression": "MAX([$UseActual])",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ]
+      },
+      {
+        "name": "Hour",
+        "columns": [
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "HourName",
+            "dataType": "string",
+            "sourceColumn": "HourName"
+          },
+          {
+            "name": "HourDesc",
+            "dataType": "string",
+            "sourceColumn": "HourDesc"
+          },
+          {
+            "name": "HourSort",
+            "dataType": "string",
+            "sourceColumn": "HourSort"
+          },
+          {
+            "name": "HourBlock",
+            "dataType": "string",
+            "sourceColumn": "HourBlock"
+          },
+          {
+            "name": "HourBlockSort",
+            "dataType": "string",
+            "sourceColumn": "HourBlockSort"
+          },
+          {
+            "name": "ShiftBlock12Hour",
+            "dataType": "int64",
+            "sourceColumn": "ShiftBlock12Hour"
+          },
+          {
+            "name": "ShiftBlock8Hour",
+            "dataType": "int64",
+            "sourceColumn": "ShiftBlock8Hour"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    Dim_Hour = Source{[Schema=\"Dim\",Item=\"Hour\"]}[Data]",
+                "in",
+                "    Dim_Hour"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "ORDER_NUM",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ORDER_NUM"
+          },
+          {
+            "name": "ORDER_LINE",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ORDER_LINE"
+          },
+          {
+            "name": "SaleTypeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SaleTypeID"
+          },
+          {
+            "name": "RevenueID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RevenueID"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "GeographyID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GeographyID"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "DemandClassID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DemandClassID"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "ACCTD_USD",
+            "dataType": "double",
+            "sourceColumn": "ACCTD_USD"
+          },
+          {
+            "name": "ENTERED_AMOUNT",
+            "dataType": "decimal",
+            "sourceColumn": "ENTERED_AMOUNT"
+          },
+          {
+            "name": "ITEM_FROZEN_COST",
+            "dataType": "decimal",
+            "sourceColumn": "ITEM_FROZEN_COST"
+          },
+          {
+            "name": "COGS_AMOUNT",
+            "dataType": "double",
+            "sourceColumn": "COGS_AMOUNT"
+          },
+          {
+            "name": "QTY",
+            "dataType": "double",
+            "sourceColumn": "QTY"
+          },
+          {
+            "name": "D&A",
+            "dataType": "double",
+            "sourceColumn": "D&A"
+          },
+          {
+            "name": "COOP",
+            "dataType": "double",
+            "sourceColumn": "COOP"
+          },
+          {
+            "name": "DIF RETURNS",
+            "dataType": "double",
+            "sourceColumn": "DIF RETURNS"
+          },
+          {
+            "name": "FREIGHT OUT",
+            "dataType": "double",
+            "sourceColumn": "FREIGHT OUT"
+          },
+          {
+            "name": "DSF REVENUE",
+            "dataType": "double",
+            "sourceColumn": "DSF REVENUE"
+          },
+          {
+            "name": "AMZMP",
+            "dataType": "double",
+            "sourceColumn": "AMZMP"
+          },
+          {
+            "name": "ROYALTY",
+            "dataType": "double",
+            "sourceColumn": "ROYALTY"
+          },
+          {
+            "name": "SURCHARGE",
+            "dataType": "double",
+            "sourceColumn": "SURCHARGE"
+          },
+          {
+            "name": "COMMISSION",
+            "dataType": "double",
+            "sourceColumn": "COMMISSION"
+          },
+          {
+            "name": "MAPP",
+            "dataType": "double",
+            "sourceColumn": "MAPP"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    dbo_FactSales = Source{[Schema=\"dbo\",Item=\"FactSales\"]}[Data]",
+                "in",
+                "    dbo_FactSales"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sales $",
+            "expression": "SUM([ACCTD_USD])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "COGS $",
+            "expression": "SUM([COGS_AMOUNT])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductKey",
+            "dataType": "string",
+            "sourceColumn": "ProductKey"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "ProductDesc",
+            "dataType": "string",
+            "sourceColumn": "ProductDesc"
+          },
+          {
+            "name": "ProductSort",
+            "dataType": "string",
+            "sourceColumn": "ProductSort"
+          },
+          {
+            "name": "4 Digit",
+            "dataType": "string",
+            "sourceColumn": "4 Digit"
+          },
+          {
+            "name": "UOM",
+            "dataType": "string",
+            "sourceColumn": "UOM"
+          },
+          {
+            "name": "Item Type",
+            "dataType": "string",
+            "sourceColumn": "Item Type"
+          },
+          {
+            "name": "SIOP Family",
+            "dataType": "string",
+            "sourceColumn": "SIOP Family"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category"
+          },
+          {
+            "name": "SubCategory",
+            "dataType": "string",
+            "sourceColumn": "SubCategory"
+          },
+          {
+            "name": "CategoryType",
+            "dataType": "string",
+            "sourceColumn": "CategoryType"
+          },
+          {
+            "name": "Brand",
+            "dataType": "string",
+            "sourceColumn": "Brand"
+          },
+          {
+            "name": "Inventory Status Code",
+            "dataType": "string",
+            "sourceColumn": "Inventory Status Code"
+          },
+          {
+            "name": "Country of Origin",
+            "dataType": "string",
+            "sourceColumn": "Country of Origin"
+          },
+          {
+            "name": "Part Class",
+            "dataType": "string",
+            "sourceColumn": "Part Class"
+          },
+          {
+            "name": "MakeBuy",
+            "dataType": "string",
+            "sourceColumn": "MakeBuy"
+          },
+          {
+            "name": "Contract Manufacturing",
+            "dataType": "string",
+            "sourceColumn": "Contract Manufacturing"
+          },
+          {
+            "name": "Channel",
+            "dataType": "string",
+            "sourceColumn": "Channel"
+          },
+          {
+            "name": "Part Type",
+            "dataType": "string",
+            "sourceColumn": "Part Type"
+          },
+          {
+            "name": "IMAP",
+            "dataType": "string",
+            "sourceColumn": "IMAP"
+          },
+          {
+            "name": "NPD",
+            "dataType": "string",
+            "sourceColumn": "NPD"
+          },
+          {
+            "name": "Product Volume",
+            "dataType": "double",
+            "sourceColumn": "Product Volume"
+          },
+          {
+            "name": "List Price",
+            "dataType": "decimal",
+            "sourceColumn": "List Price"
+          },
+          {
+            "name": "Royalty License Name",
+            "dataType": "string",
+            "sourceColumn": "Royalty License Name"
+          },
+          {
+            "name": "Shipping Method",
+            "dataType": "string",
+            "sourceColumn": "Shipping Method"
+          },
+          {
+            "name": "Cooler Size",
+            "dataType": "string",
+            "sourceColumn": "Cooler Size"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/QATAR;Operations\",",
+                "    dbo_DimProductMaster = Source{[Schema=\"dbo\",Item=\"DimProductMaster\"]}[Data]",
+                "in",
+                "    dbo_DimProductMaster"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Calcs",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values1",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values1]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values2",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values2]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values3",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values3]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values4",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values4]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values5",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values5]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values6",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values6]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values7",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values7]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values8",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values8]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values9",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values9]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values10",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values10]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values11",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values11]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values12",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values12]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values13",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values13]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values14",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values14]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values15",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values15]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values16",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values16]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values17",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values17]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values18",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values18]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values19",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values19]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values20",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values20]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values21",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values21]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values22",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values22]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values23",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values23]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values24",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values24]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values25",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values25]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values26",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values26]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values27",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values27]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values28",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values28]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values29",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values29]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values30",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values30]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values31",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values31]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values32",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values32]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values33",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values33]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values34",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values34]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values35",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values35]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values36",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values36]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values37",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values37]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values38",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values38]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values39",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values39]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values40",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values40]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values41",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values41]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values42",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values42]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values43",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values43]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values44",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values44]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values45",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values45]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values46",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values46]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values47",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values47]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values48",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values48]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values49",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values49]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values50",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values50]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values51",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values51]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values52",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values52]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values53",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values53]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values54",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values54]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values55",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values55]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values56",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values56]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values57",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values57]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values58",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values58]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values59",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values59]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values60",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values60]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values61",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values61]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values62",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values62]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values63",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values63]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values64",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values64]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values65",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values65]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values66",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values66]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values67",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values67]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values68",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values68]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values69",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values69]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values70",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values70]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values71",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values71]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values72",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values72]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values73",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values73]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values74",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values74]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values75",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values75]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values76",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values76]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values77",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values77]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values78",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values78]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values79",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values79]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Values80",
+            "dataType": "boolean",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Values80]",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\""
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "DATATABLE (\"Values1\", BOOLEAN, \"Values2\", BOOLEAN, \"Values3\", BOOLEAN, \"Values4\", BOOLEAN, \"Values5\", BOOLEAN, \"Values6\", BOOLEAN, \"Values7\", BOOLEAN, \"Values8\", BOOLEAN, \"Values9\", BOOLEAN, \"Values10\", BOOLEAN, \"Values11\", BOOLEAN, \"Values12\", BOOLEAN, \"Values13\", BOOLEAN, \"Values14\", BOOLEAN, \"Values15\", BOOLEAN, \"Values16\", BOOLEAN, \"Values17\", BOOLEAN, \"Values18\", BOOLEAN, \"Values19\", BOOLEAN, \"Values20\", BOOLEAN, \"Values21\", BOOLEAN, \"Values22\", BOOLEAN, \"Values23\", BOOLEAN, \"Values24\", BOOLEAN, \"Values25\", BOOLEAN, \"Values26\", BOOLEAN, \"Values27\", BOOLEAN, \"Values28\", BOOLEAN, \"Values29\", BOOLEAN, \"Values30\", BOOLEAN, \"Values31\", BOOLEAN, \"Values32\", BOOLEAN, \"Values33\", BOOLEAN, \"Values34\", BOOLEAN, \"Values35\", BOOLEAN, \"Values36\", BOOLEAN, \"Values37\", BOOLEAN, \"Values38\", BOOLEAN, \"Values39\", BOOLEAN, \"Values40\", BOOLEAN, \"Values41\", BOOLEAN, \"Values42\", BOOLEAN, \"Values43\", BOOLEAN, \"Values44\", BOOLEAN, \"Values45\", BOOLEAN, \"Values46\", BOOLEAN, \"Values47\", BOOLEAN, \"Values48\", BOOLEAN, \"Values49\", BOOLEAN, \"Values50\", BOOLEAN, \"Values51\", BOOLEAN, \"Values52\", BOOLEAN, \"Values53\", BOOLEAN, \"Values54\", BOOLEAN, \"Values55\", BOOLEAN, \"Values56\", BOOLEAN, \"Values57\", BOOLEAN, \"Values58\", BOOLEAN, \"Values59\", BOOLEAN, \"Values60\", BOOLEAN, \"Values61\", BOOLEAN, \"Values62\", BOOLEAN, \"Values63\", BOOLEAN, \"Values64\", BOOLEAN, \"Values65\", BOOLEAN, \"Values66\", BOOLEAN, \"Values67\", BOOLEAN, \"Values68\", BOOLEAN, \"Values69\", BOOLEAN, \"Values70\", BOOLEAN, \"Values71\", BOOLEAN, \"Values72\", BOOLEAN, \"Values73\", BOOLEAN, \"Values74\", BOOLEAN, \"Values75\", BOOLEAN, \"Values76\", BOOLEAN, \"Values77\", BOOLEAN, \"Values78\", BOOLEAN, \"Values79\", BOOLEAN, \"Values80\", BOOLEAN, {{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}})"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "XY Forecast Sales $",
+            "expression": " SUMX('Fiscal Calendar','Fiscal Calendar'[$UseActual]*[Sales List]) + SUMX('Fiscal Calendar','Fiscal Calendar'[$UseForecast]*[Forecast Sales $])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sales List",
+            "expression": " SUMX(FILTER('Sales', 'Sales'[RevenueID]=1),Sales[Sales $])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "8cafa5ae-9d2d-47a6-ab59-eabfcef9f4de",
+        "fromTable": "Forecast",
+        "fromColumn": "DemandClassID",
+        "toTable": "DemandClass",
+        "toColumn": "DemandClassID"
+      },
+      {
+        "name": "21bb51ec-1809-4f46-8f0c-b1654a0f7a2d",
+        "fromTable": "Forecast",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "DateID"
+      },
+      {
+        "name": "4f6c4daa-49bc-4e32-b297-1b4a9423f16a",
+        "fromTable": "Forecast",
+        "fromColumn": "HourID",
+        "toTable": "Hour",
+        "toColumn": "HourID"
+      },
+      {
+        "name": "f03c72b7-00f8-475d-a165-b4e00d197820",
+        "fromTable": "Forecast",
+        "fromColumn": "ProductID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "2eb891c9-ccb5-41a5-83c3-a607a729f04b",
+        "fromTable": "Forecast",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "8bc19b16-7781-4a3a-94d1-3f63e9394b3f",
+        "fromTable": "Forecast",
+        "fromColumn": "SaleTypeID",
+        "toTable": "SaleType",
+        "toColumn": "SaleTypeID"
+      },
+      {
+        "name": "99547e0e-8ad6-48c5-8b5f-6c9351e306b8",
+        "fromTable": "Sales",
+        "fromColumn": "SaleTypeID",
+        "toTable": "SaleType",
+        "toColumn": "SaleTypeID"
+      },
+      {
+        "name": "126d9f22-4ad8-4737-9547-2a0b9c8f2aa8",
+        "fromTable": "Sales",
+        "fromColumn": "RevenueID",
+        "toTable": "Product",
+        "toColumn": "ProductID"
+      },
+      {
+        "name": "607528bf-d9bd-481d-a422-bbdbea0f6b03",
+        "fromTable": "Sales",
+        "fromColumn": "CustomerID",
+        "toTable": "Customer",
+        "toColumn": "CustomerID"
+      },
+      {
+        "name": "884faa1f-1cce-497f-a0c7-fb5d55d55ad4",
+        "fromTable": "Sales",
+        "fromColumn": "DemandClassID",
+        "toTable": "DemandClass",
+        "toColumn": "DemandClassID"
+      },
+      {
+        "name": "55961c89-d7a0-40c2-92cc-f587514fee94",
+        "fromTable": "Sales",
+        "fromColumn": "DateID",
+        "toTable": "Fiscal Calendar",
+        "toColumn": "DateID"
+      },
+      {
+        "name": "fd7a72f6-efb4-4206-935a-58b1d8918463",
+        "fromTable": "Sales",
+        "fromColumn": "HourID",
+        "toTable": "Hour",
+        "toColumn": "HourID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

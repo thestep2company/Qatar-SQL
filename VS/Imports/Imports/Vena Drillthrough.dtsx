@@ -1,0 +1,1977 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/7/2022 10:42:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{E2DAAABC-932D-464D-8770-62F2F12BDB75}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Vena Drillthrough"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{41B1BB8B-F90E-4199-88BE-1BED95A7930C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{F1D3B33B-4CD0-42D4-A525-C0D241BC1567}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="\\QATAR\F$\VenaDataLoad\TxnLoadFile\S2Drillthrough.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_ENTITY"
+              DTS:DTSID="{C6B42795-AAC3-42C7-9583-7F6986F3EA85}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_LOCATION"
+              DTS:DTSID="{CC375617-B3E8-4C2E-8F42-26181BC20FE5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_DEPARTMENT"
+              DTS:DTSID="{F0C67CB5-3C5A-42D2-8C8D-04612C928F81}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="25"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_ACCOUNT"
+              DTS:DTSID="{9316E761-098C-48D8-8975-2EEF78358CBE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="16"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_VENDOR"
+              DTS:DTSID="{D4FB800A-3778-4135-9D0D-5E60B585C359}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="16"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_PLACEHOLDER 3"
+              DTS:DTSID="{057CFA9F-7ADC-4F33-9C96-2BC7956CC22C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="16"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_PLACEHOLDER 4"
+              DTS:DTSID="{C10C63B0-386E-4A5C-A522-B93B9290DF45}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_YEAR"
+              DTS:DTSID="{A6E639DF-B6C9-4AC0-857A-65B37724F3F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="2"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_PERIOD"
+              DTS:DTSID="{E0AF18A3-5A12-45B0-B532-55CE71AADC22}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="6"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_SCENARIO"
+              DTS:DTSID="{BB666B47-C49D-4979-94B5-F2406D032EF5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_CURRENCY"
+              DTS:DTSID="{237FF388-3804-4CC5-A3BC-26DAC0C33F56}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="5"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_MEASURE"
+              DTS:DTSID="{4AACE1F2-2656-4601-9AF3-89D0E5FC5FC5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_DEBIT"
+              DTS:DTSID="{7D991E1A-6662-435C-A5DA-BE2BD906C18D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_CREDIT"
+              DTS:DTSID="{7DF81810-299E-4B5D-9D68-8D0EE4253A1A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_VALUE"
+              DTS:DTSID="{D7121AB3-287F-4087-ACDE-48C7A3BF49D3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_ACCOUNTING_DATE"
+              DTS:DTSID="{A3591011-8CAF-4A5B-B740-994FF52618E1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_BATCH_ID"
+              DTS:DTSID="{51740A49-C8CB-42ED-BD32-FDBCFC3F9564}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_HEADER_ID"
+              DTS:DTSID="{0B7AF17C-5F4E-4A78-8F60-24452E613AB0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_LINE_NUM"
+              DTS:DTSID="{2320F037-B62C-49A8-A3CC-BD866FF58FE8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="302"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_CREATED_BY"
+              DTS:DTSID="{CF55CAD5-ABD9-4371-9706-7D740439658D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1996"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_AE_LINE_DESCRIPTION"
+              DTS:DTSID="{D6641A8A-5A22-4115-8DA7-3EE00FF6B94E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_ACCOUNTING_CLASS_CODE"
+              DTS:DTSID="{B5899376-4CBB-43B6-B9E8-FF1E97E255B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_CATEGORY_NAME"
+              DTS:DTSID="{E69A62D9-01AB-4FE5-B911-049AC9985A58}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_LINE_DESCRIPTION"
+              DTS:DTSID="{A1669ABD-AD26-4EEC-8E56-3F71CFB59FBE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_HEADER_NAME"
+              DTS:DTSID="{EBA08D5F-8107-4DF7-A9B0-83DFCFCE40A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_JE_HEADER_DESCRIPTION"
+              DTS:DTSID="{E8ED9445-5E47-452F-B098-E5E27D7B74FA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_AE_HEADER_ID"
+              DTS:DTSID="{3E334124-8476-4892-B7AF-726226BE0771}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_AE_LINE_NUM"
+              DTS:DTSID="{61F1A7B0-7200-400D-8B44-5E8E01609E7C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_PO_NUMBER"
+              DTS:DTSID="{97FB73EA-C11F-42B2-8945-00F3B5609758}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_PO_HEADER_ID"
+              DTS:DTSID="{B525DC04-AD2A-4E6A-BC63-E39F2D260283}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_VENDOR_NUM"
+              DTS:DTSID="{4FDA1F7A-F290-4209-9391-DEF3BC12AD07}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_INVOICE_ID"
+              DTS:DTSID="{46A66F87-2F24-43BD-AF0A-9155449EEF13}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_INVOICE_DISTRIBUION_DESC"
+              DTS:DTSID="{60D38E47-C0AF-412C-947A-F755D6BFF534}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_INVOICE_LINE_DESCRIPTION"
+              DTS:DTSID="{7FA51369-6AC5-4835-8CAB-58D4959EE68C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_INVOICE_NUM"
+              DTS:DTSID="{631D22FA-53C8-497B-B80B-7C6234DF95B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_LINE_SOURCE"
+              DTS:DTSID="{9DFDEC6F-4557-4589-A72F-881604449C7B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_WFAPPROVAL_STATUS"
+              DTS:DTSID="{FAA38A84-F55C-41BF-8EE6-32DCC7683446}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="31"
+              DTS:DataType="131"
+              DTS:DataPrecision="38"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_VENDOR_ID"
+              DTS:DTSID="{713F6CA3-2A24-4C16-9E58-633FCADF62AD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_INVOICE_AMOUNT"
+              DTS:DTSID="{3918BF55-B001-4569-AE43-62458FA770A6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="_AMOUNT_PAID"
+              DTS:DTSID="{C2682D3F-C3A6-47FF-8F6D-86D88BA570A8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E043B062-AE0F-4EAD-9629-D894E8533762}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Vena Drillthrough-{E043B062-AE0F-4EAD-9629-D894E8533762}SourceConnectionOLEDB;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{DC5C4CA0-60A9-4D29-A9EC-13366A99027E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destination - S2Drillthrough_csv"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">true</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_ENTITY]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_ENTITY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ENTITY]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ENTITY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_LOCATION]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_LOCATION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_LOCATION]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LOCATION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_DEPARTMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_DEPARTMENT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_DEPARTMENT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_ACCOUNT]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="_ACCOUNT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_PLACEHOLDER 3]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="_PLACEHOLDER 3"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PLACEHOLDER 3]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_PLACEHOLDER 4]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="_PLACEHOLDER 4"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PLACEHOLDER 4]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_YEAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4"
+                      cachedName="_YEAR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_YEAR]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_YEAR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_PERIOD]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="2"
+                      cachedName="_PERIOD"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PERIOD]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PERIOD]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_SCENARIO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="_SCENARIO"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_SCENARIO]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_SCENARIO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_CURRENCY]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="_CURRENCY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_CURRENCY]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CURRENCY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_MEASURE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="_MEASURE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_MEASURE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_MEASURE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_DEBIT]"
+                      cachedDataType="r8"
+                      cachedName="_DEBIT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_DEBIT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEBIT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_CREDIT]"
+                      cachedDataType="r8"
+                      cachedName="_CREDIT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_CREDIT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CREDIT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_VALUE]"
+                      cachedDataType="r8"
+                      cachedName="_VALUE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VALUE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VALUE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_ACCOUNTING_DATE]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="_ACCOUNTING_DATE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNTING_DATE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_DATE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_BATCH_ID]"
+                      cachedDataType="numeric"
+                      cachedName="_JE_BATCH_ID"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_BATCH_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_BATCH_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_HEADER_ID]"
+                      cachedDataType="numeric"
+                      cachedName="_JE_HEADER_ID"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_LINE_NUM]"
+                      cachedDataType="numeric"
+                      cachedName="_JE_LINE_NUM"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_LINE_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_CREATED_BY]"
+                      cachedDataType="wstr"
+                      cachedLength="302"
+                      cachedName="_JE_CREATED_BY"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_CREATED_BY]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CREATED_BY]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_AE_LINE_DESCRIPTION]"
+                      cachedDataType="wstr"
+                      cachedLength="1996"
+                      cachedName="_AE_LINE_DESCRIPTION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_LINE_DESCRIPTION]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_DESCRIPTION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_ACCOUNTING_CLASS_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="_ACCOUNTING_CLASS_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNTING_CLASS_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_CLASS_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_CATEGORY_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="_JE_CATEGORY_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_CATEGORY_NAME]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CATEGORY_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_LINE_DESCRIPTION]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="_JE_LINE_DESCRIPTION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_LINE_DESCRIPTION]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_DESCRIPTION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_HEADER_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="_JE_HEADER_NAME"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_NAME]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_JE_HEADER_DESCRIPTION]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="_JE_HEADER_DESCRIPTION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_DESCRIPTION]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_DESCRIPTION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_AE_HEADER_ID]"
+                      cachedDataType="numeric"
+                      cachedName="_AE_HEADER_ID"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_HEADER_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_AE_LINE_NUM]"
+                      cachedDataType="numeric"
+                      cachedName="_AE_LINE_NUM"
+                      cachedPrecision="38"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_LINE_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_PO_NUMBER]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="_PO_NUMBER"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PO_NUMBER]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_NUMBER]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_PO_HEADER_ID]"
+                      cachedDataType="r8"
+                      cachedName="_PO_HEADER_ID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PO_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_HEADER_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_VENDOR_NUM]"
+                      cachedDataType="numeric"
+                      cachedName="_VENDOR_NUM"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_INVOICE_ID]"
+                      cachedDataType="numeric"
+                      cachedName="_INVOICE_ID"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_INVOICE_DISTRIBUION_DESC]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="_INVOICE_DISTRIBUION_DESC"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_DISTRIBUION_DESC]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_DISTRIBUION_DESC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_INVOICE_LINE_DESCRIPTION]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="_INVOICE_LINE_DESCRIPTION"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_LINE_DESCRIPTION]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_LINE_DESCRIPTION]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_INVOICE_NUM]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="_INVOICE_NUM"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_NUM]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_LINE_SOURCE]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="_LINE_SOURCE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_LINE_SOURCE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LINE_SOURCE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_WFAPPROVAL_STATUS]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="_WFAPPROVAL_STATUS"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_WFAPPROVAL_STATUS]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_WFAPPROVAL_STATUS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_VENDOR_ID]"
+                      cachedDataType="numeric"
+                      cachedName="_VENDOR_ID"
+                      cachedPrecision="15"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_INVOICE_AMOUNT]"
+                      cachedDataType="r8"
+                      cachedName="_INVOICE_AMOUNT"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_AMOUNT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_AMOUNT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_AMOUNT_PAID]"
+                      cachedDataType="r8"
+                      cachedName="_AMOUNT_PAID"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AMOUNT_PAID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AMOUNT_PAID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].Columns[_VENDOR]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="_VENDOR"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ENTITY]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ENTITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_LOCATION]"
+                      dataType="wstr"
+                      length="25"
+                      name="_LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_DEPARTMENT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_DEPARTMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_YEAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="_YEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PERIOD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="_PERIOD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="_SCENARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_MEASURE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_DEBIT]"
+                      dataType="r8"
+                      name="_DEBIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_CREDIT]"
+                      dataType="r8"
+                      name="_CREDIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VALUE]"
+                      dataType="r8"
+                      name="_VALUE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNTING_DATE]"
+                      dataType="dbDate"
+                      name="_ACCOUNTING_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_BATCH_ID]"
+                      dataType="numeric"
+                      name="_JE_BATCH_ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_ID]"
+                      dataType="numeric"
+                      name="_JE_HEADER_ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_LINE_NUM]"
+                      dataType="numeric"
+                      name="_JE_LINE_NUM"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_CREATED_BY]"
+                      dataType="wstr"
+                      length="302"
+                      name="_JE_CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="1996"
+                      name="_AE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_ACCOUNTING_CLASS_CODE]"
+                      dataType="wstr"
+                      length="30"
+                      name="_ACCOUNTING_CLASS_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_CATEGORY_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="_JE_CATEGORY_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_JE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_NAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="_JE_HEADER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_JE_HEADER_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_JE_HEADER_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_HEADER_ID]"
+                      dataType="numeric"
+                      name="_AE_HEADER_ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AE_LINE_NUM]"
+                      dataType="numeric"
+                      name="_AE_LINE_NUM"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PO_NUMBER]"
+                      dataType="wstr"
+                      length="20"
+                      name="_PO_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_PO_HEADER_ID]"
+                      dataType="r8"
+                      name="_PO_HEADER_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR_NUM]"
+                      dataType="numeric"
+                      name="_VENDOR_NUM"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_ID]"
+                      dataType="numeric"
+                      name="_INVOICE_ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_DISTRIBUION_DESC]"
+                      dataType="wstr"
+                      length="240"
+                      name="_INVOICE_DISTRIBUION_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_INVOICE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_NUM]"
+                      dataType="wstr"
+                      length="50"
+                      name="_INVOICE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_LINE_SOURCE]"
+                      dataType="wstr"
+                      length="30"
+                      name="_LINE_SOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_WFAPPROVAL_STATUS]"
+                      dataType="wstr"
+                      length="30"
+                      name="_WFAPPROVAL_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR_ID]"
+                      dataType="numeric"
+                      name="_VENDOR_ID"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_INVOICE_AMOUNT]"
+                      dataType="r8"
+                      name="_INVOICE_AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_AMOUNT_PAID]"
+                      dataType="r8"
+                      name="_AMOUNT_PAID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input].ExternalColumns[_VENDOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_VENDOR" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - VenaDrillthrough"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - VenaDrillthrough"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OUTPUT].[VenaDrillthroughVendor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ENTITY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ENTITY]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ENTITY]"
+                      name="_ENTITY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LOCATION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_LOCATION]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LOCATION]"
+                      name="_LOCATION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_DEPARTMENT]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEPARTMENT]"
+                      name="_DEPARTMENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNT]"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNT]"
+                      name="_ACCOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 3]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 3]"
+                      name="_PLACEHOLDER 3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 4]"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PLACEHOLDER 4]"
+                      name="_PLACEHOLDER 4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_YEAR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_YEAR]"
+                      length="4"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_YEAR]"
+                      name="_YEAR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PERIOD]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PERIOD]"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PERIOD]"
+                      name="_PERIOD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_SCENARIO]"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_SCENARIO]"
+                      name="_SCENARIO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_CURRENCY]"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CURRENCY]"
+                      name="_CURRENCY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_MEASURE]"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_MEASURE]"
+                      name="_MEASURE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEBIT]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_DEBIT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_DEBIT]"
+                      name="_DEBIT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CREDIT]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_CREDIT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_CREDIT]"
+                      name="_CREDIT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VALUE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VALUE]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VALUE]"
+                      name="_VALUE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_DATE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNTING_DATE]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_DATE]"
+                      name="_ACCOUNTING_DATE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_BATCH_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_BATCH_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_BATCH_ID]"
+                      name="_JE_BATCH_ID"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_ID]"
+                      name="_JE_HEADER_ID"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_NUM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_LINE_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_NUM]"
+                      name="_JE_LINE_NUM"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CREATED_BY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_CREATED_BY]"
+                      length="302"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CREATED_BY]"
+                      name="_JE_CREATED_BY"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_LINE_DESCRIPTION]"
+                      length="1996"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_DESCRIPTION]"
+                      name="_AE_LINE_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_CLASS_CODE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNTING_CLASS_CODE]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_ACCOUNTING_CLASS_CODE]"
+                      name="_ACCOUNTING_CLASS_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CATEGORY_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_CATEGORY_NAME]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_CATEGORY_NAME]"
+                      name="_JE_CATEGORY_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_LINE_DESCRIPTION]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_LINE_DESCRIPTION]"
+                      name="_JE_LINE_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_NAME]"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_NAME]"
+                      name="_JE_HEADER_NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_DESCRIPTION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_DESCRIPTION]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_JE_HEADER_DESCRIPTION]"
+                      name="_JE_HEADER_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_HEADER_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_HEADER_ID]"
+                      name="_AE_HEADER_ID"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_NUM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_LINE_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AE_LINE_NUM]"
+                      name="_AE_LINE_NUM"
+                      precision="38"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_NUMBER]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PO_NUMBER]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_NUMBER]"
+                      name="_PO_NUMBER"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_HEADER_ID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PO_HEADER_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_PO_HEADER_ID]"
+                      name="_PO_HEADER_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_NUM]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR_NUM]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_NUM]"
+                      name="_VENDOR_NUM"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_ID]"
+                      name="_INVOICE_ID"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_DISTRIBUION_DESC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_DISTRIBUION_DESC]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_DISTRIBUION_DESC]"
+                      name="_INVOICE_DISTRIBUION_DESC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_LINE_DESCRIPTION]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_LINE_DESCRIPTION]"
+                      name="_INVOICE_LINE_DESCRIPTION"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_NUM]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_NUM]"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_NUM]"
+                      name="_INVOICE_NUM"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LINE_SOURCE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_LINE_SOURCE]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_LINE_SOURCE]"
+                      name="_LINE_SOURCE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_WFAPPROVAL_STATUS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_WFAPPROVAL_STATUS]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_WFAPPROVAL_STATUS]"
+                      name="_WFAPPROVAL_STATUS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_ID]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR_ID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR_ID]"
+                      name="_VENDOR_ID"
+                      precision="15"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_AMOUNT]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_AMOUNT]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_INVOICE_AMOUNT]"
+                      name="_INVOICE_AMOUNT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AMOUNT_PAID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AMOUNT_PAID]"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_AMOUNT_PAID]"
+                      name="_AMOUNT_PAID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].Columns[_VENDOR]"
+                      name="_VENDOR"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ENTITY]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ENTITY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_LOCATION]"
+                      dataType="wstr"
+                      length="25"
+                      name="_LOCATION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_DEPARTMENT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_DEPARTMENT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNT]"
+                      dataType="wstr"
+                      length="25"
+                      name="_ACCOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="_PLACEHOLDER 4" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_YEAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="_YEAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PERIOD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      name="_PERIOD" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="_SCENARIO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="_MEASURE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_DEBIT]"
+                      dataType="r8"
+                      name="_DEBIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_CREDIT]"
+                      dataType="r8"
+                      name="_CREDIT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VALUE]"
+                      dataType="r8"
+                      name="_VALUE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNTING_DATE]"
+                      dataType="wstr"
+                      length="10"
+                      name="_ACCOUNTING_DATE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_BATCH_ID]"
+                      dataType="numeric"
+                      name="_JE_BATCH_ID"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_ID]"
+                      dataType="numeric"
+                      name="_JE_HEADER_ID"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_LINE_NUM]"
+                      dataType="numeric"
+                      name="_JE_LINE_NUM"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_CREATED_BY]"
+                      dataType="wstr"
+                      length="302"
+                      name="_JE_CREATED_BY" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="1996"
+                      name="_AE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_ACCOUNTING_CLASS_CODE]"
+                      dataType="wstr"
+                      length="30"
+                      name="_ACCOUNTING_CLASS_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_CATEGORY_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      name="_JE_CATEGORY_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_JE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_NAME]"
+                      dataType="wstr"
+                      length="100"
+                      name="_JE_HEADER_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_JE_HEADER_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_JE_HEADER_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_HEADER_ID]"
+                      dataType="numeric"
+                      name="_AE_HEADER_ID"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AE_LINE_NUM]"
+                      dataType="numeric"
+                      name="_AE_LINE_NUM"
+                      precision="38" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PO_NUMBER]"
+                      dataType="wstr"
+                      length="20"
+                      name="_PO_NUMBER" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_PO_HEADER_ID]"
+                      dataType="r8"
+                      name="_PO_HEADER_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR_NUM]"
+                      dataType="numeric"
+                      name="_VENDOR_NUM"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_ID]"
+                      dataType="numeric"
+                      name="_INVOICE_ID"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_DISTRIBUION_DESC]"
+                      dataType="wstr"
+                      length="240"
+                      name="_INVOICE_DISTRIBUION_DESC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      name="_INVOICE_LINE_DESCRIPTION" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_NUM]"
+                      dataType="wstr"
+                      length="50"
+                      name="_INVOICE_NUM" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_LINE_SOURCE]"
+                      dataType="wstr"
+                      length="30"
+                      name="_LINE_SOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_WFAPPROVAL_STATUS]"
+                      dataType="wstr"
+                      length="30"
+                      name="_WFAPPROVAL_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR_ID]"
+                      dataType="numeric"
+                      name="_VENDOR_ID"
+                      precision="15" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_INVOICE_AMOUNT]"
+                      dataType="r8"
+                      name="_INVOICE_AMOUNT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_AMOUNT_PAID]"
+                      dataType="r8"
+                      name="_AMOUNT_PAID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output].ExternalColumns[_VENDOR]"
+                      dataType="wstr"
+                      length="30"
+                      name="_VENDOR" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ENTITY]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ENTITY]"
+                      name="_ENTITY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_LOCATION]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_LOCATION]"
+                      name="_LOCATION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_DEPARTMENT]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_DEPARTMENT]"
+                      name="_DEPARTMENT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNT]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNT]"
+                      name="_ACCOUNT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR]"
+                      name="_VENDOR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 3]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 3]"
+                      name="_PLACEHOLDER 3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PLACEHOLDER 4]"
+                      name="_PLACEHOLDER 4" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_YEAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_YEAR]"
+                      name="_YEAR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PERIOD]"
+                      codePage="1252"
+                      dataType="str"
+                      length="2"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PERIOD]"
+                      name="_PERIOD" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_SCENARIO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_SCENARIO]"
+                      name="_SCENARIO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_CURRENCY]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_CURRENCY]"
+                      name="_CURRENCY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_MEASURE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_MEASURE]"
+                      name="_MEASURE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_DEBIT]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_DEBIT]"
+                      name="_DEBIT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_CREDIT]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_CREDIT]"
+                      name="_CREDIT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VALUE]"
+                      name="_VALUE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNTING_DATE]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNTING_DATE]"
+                      name="_ACCOUNTING_DATE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_BATCH_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_BATCH_ID]"
+                      name="_JE_BATCH_ID"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_ID]"
+                      name="_JE_HEADER_ID"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_LINE_NUM]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_LINE_NUM]"
+                      name="_JE_LINE_NUM"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_CREATED_BY]"
+                      dataType="wstr"
+                      length="302"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_CREATED_BY]"
+                      name="_JE_CREATED_BY" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="1996"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_LINE_DESCRIPTION]"
+                      name="_AE_LINE_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNTING_CLASS_CODE]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_ACCOUNTING_CLASS_CODE]"
+                      name="_ACCOUNTING_CLASS_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_CATEGORY_NAME]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_CATEGORY_NAME]"
+                      name="_JE_CATEGORY_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_LINE_DESCRIPTION]"
+                      name="_JE_LINE_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_NAME]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_NAME]"
+                      name="_JE_HEADER_NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_JE_HEADER_DESCRIPTION]"
+                      name="_JE_HEADER_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_HEADER_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_HEADER_ID]"
+                      name="_AE_HEADER_ID"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_LINE_NUM]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AE_LINE_NUM]"
+                      name="_AE_LINE_NUM"
+                      precision="38" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PO_NUMBER]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PO_NUMBER]"
+                      name="_PO_NUMBER" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PO_HEADER_ID]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_PO_HEADER_ID]"
+                      name="_PO_HEADER_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR_NUM]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR_NUM]"
+                      name="_VENDOR_NUM"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_ID]"
+                      name="_INVOICE_ID"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_DISTRIBUION_DESC]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_DISTRIBUION_DESC]"
+                      name="_INVOICE_DISTRIBUION_DESC" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_LINE_DESCRIPTION]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_LINE_DESCRIPTION]"
+                      name="_INVOICE_LINE_DESCRIPTION" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_NUM]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_NUM]"
+                      name="_INVOICE_NUM" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_LINE_SOURCE]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_LINE_SOURCE]"
+                      name="_LINE_SOURCE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_WFAPPROVAL_STATUS]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_WFAPPROVAL_STATUS]"
+                      name="_WFAPPROVAL_STATUS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR_ID]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_VENDOR_ID]"
+                      name="_VENDOR_ID"
+                      precision="15" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_AMOUNT]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_INVOICE_AMOUNT]"
+                      name="_INVOICE_AMOUNT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AMOUNT_PAID]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[_AMOUNT_PAID]"
+                      name="_AMOUNT_PAID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - S2Drillthrough_csv.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - VenaDrillthrough.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Data Flow Task 1\Source - VenaDrillthrough"
+          TopLeft="20.5,5.5" />
+        <NodeLayout
+          Size="230.4,41.6"
+          Id="Package\Data Flow Task 1\Destination - S2Drillthrough_csv"
+          TopLeft="5.50000000000001,107.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="120.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\Source - VenaDrillthrough">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

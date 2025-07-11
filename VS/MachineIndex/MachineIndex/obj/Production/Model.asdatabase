@@ -1,0 +1,1245 @@
+{
+  "name": "MachineIndex",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/qatar;operations",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "qatar",
+            "database": "operations"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Fact Machine Index",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "DateID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "HourID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "PlantID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PlantID"
+          },
+          {
+            "name": "ProductAID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductAID"
+          },
+          {
+            "name": "ProductBID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductBID"
+          },
+          {
+            "name": "ShiftID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftID"
+          },
+          {
+            "name": "MachineID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MachineID"
+          },
+          {
+            "name": "OperatorID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OperatorID"
+          },
+          {
+            "name": "ReasonID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReasonID"
+          },
+          {
+            "name": "ShiftOffsetID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftOffsetID"
+          },
+          {
+            "name": "$CycleCount",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CycleCount"
+          },
+          {
+            "name": "$MissedCycle",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MissedCycle"
+          },
+          {
+            "name": "$EmptyCycle",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmptyCycle"
+          },
+          {
+            "name": "$CycleTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "CycleTime"
+          },
+          {
+            "name": "$IndexTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "IndexTime"
+          },
+          {
+            "name": "$MissedTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "MissedTime"
+          },
+          {
+            "name": "$MadeTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "MadeTime"
+          },
+          {
+            "name": "$OvenTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "OvenTime"
+          },
+          {
+            "name": "$TotalTime",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "TotalTime"
+          },
+          {
+            "name": "CurrentShiftID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CurrentShiftID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_FactMachineIndexLive = Source{[Schema=\"dbo\",Item=\"FactMachineIndexLive\"]}[Data]",
+                "in",
+                "    dbo_FactMachineIndexLive"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Capacity Rounds per Machine",
+            "expression": " [Capacity Rounds per Shift]*[Shift Scalar]",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Cycle Count",
+            "expression": " SUM([$CycleCount])",
+            "formatString": "0"
+          },
+          {
+            "name": "Cycle Time",
+            "expression": " SUM([$CycleTime])",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Empty Cycle",
+            "expression": " SUM([$EmptyCycle])"
+          },
+          {
+            "name": "Gamify",
+            "expression": " RANKX(ALL('Dim Machine'),SUMX(RELATEDTABLE('Fact Machine Index'),[Round Count]))"
+          },
+          {
+            "name": "Round Count",
+            "expression": " IF(ISBLANK(COUNT([ID])),0,COUNT([ID])/4)"
+          },
+          {
+            "name": "Index Time",
+            "expression": " SUM([$IndexTime])",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Made Time",
+            "expression": " SUM([$MadeTime])",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Missed Cycle Minutes",
+            "expression": " IF(AND('Fact Machine Index'[Cycle Time]>0,ISBLANK([Missed Cycle Time])),0,SUM([$MissedTime])*60)",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Missed Cycle Time",
+            "expression": " SUM([$MissedTime])",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Missed Cycle Time Color",
+            "expression": [
+              " ",
+              "IF([Total Time]<2.5 --values",
+              "    ,IF([Missed Cycle Minutes]<2,\"#008000\" --green",
+              "        ,IF([Missed Cycle Minutes]<5,\"#FFFF00\",\"#FF0000\") --yellow,red",
+              "    )",
+              "    --totals (more than 2 hour block)",
+              "    ,IF([Missed Cycle Minutes]<16,\"#008000\" --green",
+              "        ,IF([Missed Cycle Minutes]<34,\"#FFFF00\",\"#FF0000\") --yellow,red",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "Missed Cycle Time Switch",
+            "expression": [
+              " ",
+              "IF([Total Time]<2.5",
+              "    ,SWITCH(TRUE()",
+              "        ,[Missed Cycle Minutes]<2,\"#008000\" --green",
+              "        ,[Missed Cycle Minutes]<5,\"#FFFF00\" --yellow",
+              "        ,\"#FF0000\" --red",
+              "    )",
+              "    ,SWITCH(TRUE()--totals (more than 2 hour block)",
+              "        ,[Missed Cycle Minutes]<16,\"#008000\" --green",
+              "        ,[Missed Cycle Minutes]<34,\"#FFFF00\" --yellow",
+              "        ,\"#FF0000\" --red",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "Missed Cycles",
+            "expression": " SUM([$MissedCycle])",
+            "formatString": "0"
+          },
+          {
+            "name": "Oven Time",
+            "expression": " SUM([$OvenTime])",
+            "formatString": "0.00"
+          },
+          {
+            "name": "Total Time",
+            "expression": " SUM([$TotalTime])",
+            "formatString": "0.00"
+          }
+        ]
+      },
+      {
+        "name": "Dim Location",
+        "columns": [
+          {
+            "name": "Location ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "Location Key",
+            "dataType": "string",
+            "sourceColumn": "LocationKey"
+          },
+          {
+            "name": "Location Name",
+            "dataType": "string",
+            "sourceColumn": "LocationName"
+          },
+          {
+            "name": "Location Desc",
+            "dataType": "string",
+            "sourceColumn": "LocationDesc"
+          },
+          {
+            "name": "Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Sort"
+          },
+          {
+            "name": "Location Type",
+            "dataType": "string",
+            "sourceColumn": "LocationType"
+          },
+          {
+            "name": "Location Country",
+            "dataType": "string",
+            "sourceColumn": "LocationCountry"
+          },
+          {
+            "name": "$ShiftScalar",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "ShiftScalar",
+            "formatString": "0.00"
+          },
+          {
+            "name": "GL Location ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GLLocationID"
+          },
+          {
+            "name": "Warehouse Capacity",
+            "dataType": "int64",
+            "sourceColumn": "WarehouseCapacity"
+          },
+          {
+            "name": "Physical Location",
+            "dataType": "string",
+            "sourceColumn": "PhysicalLocation"
+          },
+          {
+            "name": "Plan ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PlanID"
+          },
+          {
+            "name": "COGS Location ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "COGSLocationID"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimLocation = Source{[Schema=\"dbo\",Item=\"DimLocation\"]}[Data]",
+                "in",
+                "    dbo_DimLocation"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Shift Scalar",
+            "expression": " MAX([$ShiftScalar])"
+          }
+        ]
+      },
+      {
+        "name": "Dim Machine",
+        "columns": [
+          {
+            "name": "Machine ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MachineID"
+          },
+          {
+            "name": "Location Key",
+            "dataType": "string",
+            "sourceColumn": "LocationKey"
+          },
+          {
+            "name": "Machine Key",
+            "dataType": "string",
+            "sourceColumn": "MachineKey",
+            "sortByColumn": "Machine Sort"
+          },
+          {
+            "name": "Machine Name",
+            "dataType": "string",
+            "sourceColumn": "MachineName",
+            "sortByColumn": "Machine Sort"
+          },
+          {
+            "name": "Machine Desc",
+            "dataType": "string",
+            "sourceColumn": "MachineDesc"
+          },
+          {
+            "name": "Machine Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "MachineSort"
+          },
+          {
+            "name": "Machine Model",
+            "dataType": "string",
+            "sourceColumn": "MachineModel"
+          },
+          {
+            "name": "Machine Number",
+            "dataType": "string",
+            "sourceColumn": "MachineNumber"
+          },
+          {
+            "name": "Machine Cell",
+            "dataType": "int64",
+            "sourceColumn": "MachineCell"
+          },
+          {
+            "name": "Cell Position",
+            "dataType": "int64",
+            "sourceColumn": "CellPosition"
+          },
+          {
+            "name": "$RoundsPerShift",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RoundsPerShift"
+          },
+          {
+            "name": "$CapacityRoundsPerShift",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CapacityRoundsPerShift"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimMachine = Source{[Schema=\"dbo\",Item=\"DimMachine\"]}[Data]",
+                "in",
+                "    dbo_DimMachine"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Capacity Rounds per Shift",
+            "expression": " MIN([$CapacityRoundsPerShift])"
+          },
+          {
+            "name": "Machine Goal Scalar",
+            "expression": " IF(MAX('Dim Machine'[Machine Model]) = \"190\",32/36,24/30)"
+          },
+          {
+            "name": "Rounds per Machine Goal",
+            "expression": " MIN([$CapacityRoundsPerShift])*MAX('Fact Shift Hours'[Hours])/12*[Machine Goal Scalar]"
+          }
+        ]
+      },
+      {
+        "name": "Dim Shift",
+        "columns": [
+          {
+            "name": "Shift ID",
+            "dataType": "int64",
+            "sourceColumn": "ShiftID"
+          },
+          {
+            "name": "Shift Key",
+            "dataType": "string",
+            "sourceColumn": "ShiftKey"
+          },
+          {
+            "name": "Shift Name",
+            "dataType": "string",
+            "sourceColumn": "ShiftName"
+          },
+          {
+            "name": "Shift Desc",
+            "dataType": "string",
+            "sourceColumn": "ShiftDesc"
+          },
+          {
+            "name": "Shift Sort",
+            "dataType": "string",
+            "sourceColumn": "ShiftSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimShift = Source{[Schema=\"dbo\",Item=\"DimShift\"]}[Data]",
+                "in",
+                "    dbo_DimShift"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim Hour",
+        "columns": [
+          {
+            "name": "Hour ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "Hour Name",
+            "dataType": "string",
+            "sourceColumn": "HourName",
+            "sortByColumn": "Hour Sort"
+          },
+          {
+            "name": "Hour Desc",
+            "dataType": "string",
+            "sourceColumn": "HourDesc"
+          },
+          {
+            "name": "Hour Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "HourSort"
+          },
+          {
+            "name": "Hour Block",
+            "dataType": "string",
+            "sourceColumn": "HourBlock",
+            "sortByColumn": "Hour Block Sort"
+          },
+          {
+            "name": "Hour Block Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "HourBlockSort"
+          },
+          {
+            "name": "Shift Block 12 Hour",
+            "dataType": "int64",
+            "sourceColumn": "ShiftBlock12Hour"
+          },
+          {
+            "name": "Shift Block 8 Hour",
+            "dataType": "int64",
+            "sourceColumn": "ShiftBlock8Hour"
+          },
+          {
+            "name": "Current Hour to Date",
+            "dataType": "boolean",
+            "isHidden": true,
+            "sourceColumn": "CurrentHourtoDate"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimHour = Source{[Schema=\"dbo\",Item=\"DimHour\"]}[Data]",
+                "in",
+                "    dbo_DimHour"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Last Page Refresh",
+            "expression": " {NOW()}",
+            "formatString": "General Date"
+          }
+        ]
+      },
+      {
+        "name": "Dim Cycle Reason",
+        "columns": [
+          {
+            "name": "Reason ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReasonID"
+          },
+          {
+            "name": "Reason Key",
+            "dataType": "string",
+            "sourceColumn": "ReasonKey"
+          },
+          {
+            "name": "Reason Name",
+            "dataType": "string",
+            "sourceColumn": "ReasonName"
+          },
+          {
+            "name": "Reason Desc",
+            "dataType": "string",
+            "sourceColumn": "ReasonDesc"
+          },
+          {
+            "name": "Reason Category",
+            "dataType": "string",
+            "sourceColumn": "ReasonCategory"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    Dim_CycleReason = Source{[Schema=\"Dim\",Item=\"CycleReason\"]}[Data]",
+                "in",
+                "    Dim_CycleReason"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim Operator",
+        "columns": [
+          {
+            "name": "Operator ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "OperatorID"
+          },
+          {
+            "name": "Operator Key",
+            "dataType": "string",
+            "sourceColumn": "OperatorKey"
+          },
+          {
+            "name": "Operator Name",
+            "dataType": "string",
+            "sourceColumn": "OperatorName"
+          },
+          {
+            "name": "Operator Desc",
+            "dataType": "string",
+            "sourceColumn": "OperatorDesc"
+          },
+          {
+            "name": "Person Number",
+            "dataType": "string",
+            "sourceColumn": "Person Number"
+          },
+          {
+            "name": "Primary Location",
+            "dataType": "string",
+            "sourceColumn": "Primary Location"
+          },
+          {
+            "name": "Primary Job",
+            "dataType": "string",
+            "sourceColumn": "Primary Job"
+          },
+          {
+            "name": "Reports To",
+            "dataType": "string",
+            "sourceColumn": "Reports To"
+          },
+          {
+            "name": "Pay Rule",
+            "dataType": "string",
+            "sourceColumn": "Pay Rule"
+          },
+          {
+            "name": "Hire Date",
+            "dataType": "string",
+            "sourceColumn": "Hire Date"
+          },
+          {
+            "name": "Employment Status",
+            "dataType": "string",
+            "sourceColumn": "Employment Status"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    Dim_Operator = Source{[Schema=\"Dim\",Item=\"Operator\"]}[Data]",
+                "in",
+                "    Dim_Operator"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact Scrap",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "Plant ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "PlantID"
+          },
+          {
+            "name": "Shift ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftID"
+          },
+          {
+            "name": "Machine ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MachineID"
+          },
+          {
+            "name": "Component ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ComponentID"
+          },
+          {
+            "name": "Product ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "Repair ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RepairID"
+          },
+          {
+            "name": "Repair Reason ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RepairReasonID"
+          },
+          {
+            "name": "Date ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "Hour ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "HourID"
+          },
+          {
+            "name": "Current Shift ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CurrentShiftID"
+          },
+          {
+            "name": "Shift Offset ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftOffsetID"
+          },
+          {
+            "name": "User Name",
+            "dataType": "string",
+            "sourceColumn": "UserName"
+          },
+          {
+            "name": "Error Key",
+            "dataType": "string",
+            "sourceColumn": "ErrorKey"
+          },
+          {
+            "name": "Pigment Key",
+            "dataType": "string",
+            "sourceColumn": "PigmentKey"
+          },
+          {
+            "name": "Qty",
+            "dataType": "double",
+            "sourceColumn": "Qty"
+          },
+          {
+            "name": "Lbs",
+            "dataType": "double",
+            "sourceColumn": "Lbs"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_FactScrapLiveScreens = Source{[Schema=\"dbo\",Item=\"FactScrapLiveScreens\"]}[Data]",
+                "in",
+                "    dbo_FactScrapLiveScreens"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Pieces Repaired",
+            "expression": " CALCULATE(SUM('Fact Scrap'[Qty]),'Dim Repair'[Repair Key]=\"Repair\")"
+          },
+          {
+            "name": "Pieces Repaired Display",
+            "expression": " IF(AND(SUM('Fact Machine Index'[$CycleTime])>0,ISBLANK([Pieces Repaired])),0,[Pieces Repaired])"
+          },
+          {
+            "name": "Pieces Scrapped",
+            "expression": " CALCULATE(SUM('Fact Scrap'[Qty]),'Dim Repair'[Repair Key]=\"Roto_Scrap\")"
+          },
+          {
+            "name": "Pieces Scrapped Display",
+            "expression": " IF(AND(SUM('Fact Machine Index'[$CycleTime])>0,ISBLANK([Pieces Scrapped])),0,[Pieces Scrapped])"
+          }
+        ]
+      },
+      {
+        "name": "Dim Repair Reason",
+        "columns": [
+          {
+            "name": "Repair Reason ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RepairReasonID"
+          },
+          {
+            "name": "Org Code",
+            "dataType": "string",
+            "sourceColumn": "OrgCode"
+          },
+          {
+            "name": "Repair Reason Key",
+            "dataType": "string",
+            "sourceColumn": "RepairReasonKey",
+            "sortByColumn": "Repair Reason Sort"
+          },
+          {
+            "name": "Repair Reason Name",
+            "dataType": "string",
+            "sourceColumn": "RepairReasonName",
+            "sortByColumn": "Repair Reason Sort"
+          },
+          {
+            "name": "Repair Reason Desc",
+            "dataType": "string",
+            "sourceColumn": "RepairReasonDesc"
+          },
+          {
+            "name": "Repair Reason Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RepairReasonSort"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimRepairReason = Source{[Schema=\"dbo\",Item=\"DimRepairReason\"]}[Data]",
+                "in",
+                "    dbo_DimRepairReason"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim Repair",
+        "columns": [
+          {
+            "name": "Repair ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "RepairID"
+          },
+          {
+            "name": "Repair Key",
+            "dataType": "string",
+            "sourceColumn": "RepairKey",
+            "sortByColumn": "Repair Sort"
+          },
+          {
+            "name": "Repair Name",
+            "dataType": "string",
+            "sourceColumn": "RepairName",
+            "sortByColumn": "Repair Sort"
+          },
+          {
+            "name": "Repair Desc",
+            "dataType": "string",
+            "sourceColumn": "RepairDesc"
+          },
+          {
+            "name": "Repair Sort",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "RepairSort"
+          },
+          {
+            "name": "Scrap",
+            "dataType": "int64",
+            "sourceColumn": "Scrap"
+          },
+          {
+            "name": "Repair",
+            "dataType": "int64",
+            "sourceColumn": "Repair"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_DimRepair = Source{[Schema=\"dbo\",Item=\"DimRepair\"]}[Data]",
+                "in",
+                "    dbo_DimRepair"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim Shift Control",
+        "columns": [
+          {
+            "name": "Shift Control ID",
+            "dataType": "int64",
+            "sourceColumn": "ShiftControlID"
+          },
+          {
+            "name": "Location ID",
+            "dataType": "int64",
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "Current Shift ID",
+            "dataType": "int64",
+            "sourceColumn": "CurrentShiftID"
+          },
+          {
+            "name": "Shift Name",
+            "dataType": "string",
+            "sourceColumn": "ShiftName"
+          },
+          {
+            "name": "Shift Hour Block 1",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock1"
+          },
+          {
+            "name": "Shift Hour Block 2",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock2"
+          },
+          {
+            "name": "Shift Hour Block 3",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock3"
+          },
+          {
+            "name": "Shift Hour Block 4",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock4"
+          },
+          {
+            "name": "Shift Hour Block 5",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock5"
+          },
+          {
+            "name": "Shift Hour Block 6",
+            "dataType": "string",
+            "sourceColumn": "ShiftHourBlock6"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    Dim_ShiftControl = Source{[Schema=\"Dim\",Item=\"ShiftControl\"]}[Data]",
+                "in",
+                "    Dim_ShiftControl"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact Shift Hours",
+        "columns": [
+          {
+            "name": "ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ID"
+          },
+          {
+            "name": "Current Shift ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CurrentShiftID"
+          },
+          {
+            "name": "Location ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID"
+          },
+          {
+            "name": "Shift Offset ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftOffsetID"
+          },
+          {
+            "name": "Shift ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ShiftID"
+          },
+          {
+            "name": "Start Date Time",
+            "dataType": "dateTime",
+            "sourceColumn": "Start_Date_Time"
+          },
+          {
+            "name": "End Date Time",
+            "dataType": "dateTime",
+            "sourceColumn": "End_Date_Time"
+          },
+          {
+            "name": "Date ID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateID"
+          },
+          {
+            "name": "Trans Date",
+            "dataType": "dateTime",
+            "sourceColumn": "TransDate"
+          },
+          {
+            "name": "Hours",
+            "dataType": "double",
+            "sourceColumn": "Hours"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/qatar;operations\",",
+                "    dbo_FactShiftHoursLive = Source{[Schema=\"dbo\",Item=\"FactShiftHoursLive\"]}[Data]",
+                "in",
+                "    dbo_FactShiftHoursLive"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "ebdbb319-e9ef-47da-bd69-691e2fe90c07",
+        "fromTable": "Fact Shift Hours",
+        "fromColumn": "Current Shift ID",
+        "toTable": "Dim Shift Control",
+        "toColumn": "Current Shift ID"
+      },
+      {
+        "name": "53e42fb2-68cb-4498-9d1f-f64be2a09684",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "CurrentShiftID",
+        "toTable": "Dim Shift Control",
+        "toColumn": "Current Shift ID"
+      },
+      {
+        "name": "d2e3e582-974f-4058-bad1-70c15d9a088d",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "HourID",
+        "toTable": "Dim Hour",
+        "toColumn": "Hour ID"
+      },
+      {
+        "name": "54e9c91d-e36d-47b7-9126-bdfeb4219bed",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "MachineID",
+        "toTable": "Dim Machine",
+        "toColumn": "Machine ID"
+      },
+      {
+        "name": "487f6309-6f7e-4f74-984a-a524ce5b559b",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "OperatorID",
+        "toTable": "Dim Operator",
+        "toColumn": "Operator ID"
+      },
+      {
+        "name": "20a129ad-113b-4f1a-9a84-3469a25c15f4",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "PlantID",
+        "toTable": "Dim Location",
+        "toColumn": "Location ID"
+      },
+      {
+        "name": "64ac1e06-54e8-4e87-94cd-2825c4e9d834",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "ReasonID",
+        "toTable": "Dim Cycle Reason",
+        "toColumn": "Reason ID"
+      },
+      {
+        "name": "15326580-63d6-4b08-970d-24dcf81bdde3",
+        "fromTable": "Fact Machine Index",
+        "fromColumn": "ShiftID",
+        "toTable": "Dim Shift",
+        "toColumn": "Shift ID"
+      },
+      {
+        "name": "aa575cd6-f3e2-4608-8a36-f9a1b087cf1b",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Current Shift ID",
+        "toTable": "Dim Shift Control",
+        "toColumn": "Current Shift ID"
+      },
+      {
+        "name": "896e250c-d061-477f-89a9-250c85080c9d",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Hour ID",
+        "toTable": "Dim Hour",
+        "toColumn": "Hour ID"
+      },
+      {
+        "name": "f256431a-49e1-4146-b9e5-cddf7bdeec15",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Machine ID",
+        "toTable": "Dim Machine",
+        "toColumn": "Machine ID"
+      },
+      {
+        "name": "e8667c43-45cd-4696-a1ca-7c0dc317d49c",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Plant ID",
+        "toTable": "Dim Location",
+        "toColumn": "Location ID"
+      },
+      {
+        "name": "207c727f-7c5b-4205-9af6-34dccdae8b8c",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Repair ID",
+        "toTable": "Dim Repair",
+        "toColumn": "Repair ID"
+      },
+      {
+        "name": "c59b3a5b-e023-4480-aa8e-ea5760deb9b2",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Repair Reason ID",
+        "toTable": "Dim Repair Reason",
+        "toColumn": "Repair Reason ID"
+      },
+      {
+        "name": "74caae4f-7182-4014-b50d-79b14b3223ea",
+        "fromTable": "Fact Scrap",
+        "fromColumn": "Shift ID",
+        "toTable": "Dim Shift",
+        "toColumn": "Shift ID"
+      }
+    ],
+    "roles": [
+      {
+        "name": "Read",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "STEP2\\Domain Users",
+            "memberId": "S-1-5-21-209193057-2653316314-1365489721-513"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  }
+}

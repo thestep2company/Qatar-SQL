@@ -1,0 +1,14 @@
+C:\Users\derek_a\source\repos\Financials\Financials\bin\Production\Model.asdatabase
+C:\Users\derek_a\source\repos\Financials\Financials\bin\Production\Model.deploymenttargets
+C:\Users\derek_a\source\repos\Financials\Financials\bin\Production\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Financials\Financials\obj\Production\Financials.smproj.CoreCompileInputs.cache
+C:\Users\derek_a\source\repos\Financials\Financials\obj\Production\Model.asdatabase
+C:\Users\derek_a\source\repos\Financials\Financials\obj\Production\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Financials\Financials\obj\Production\Model.deploymenttargets
+D:\repos\Financials\Financials\bin\Production\Model.asdatabase
+D:\repos\Financials\Financials\bin\Production\Model.deploymenttargets
+D:\repos\Financials\Financials\bin\Production\Model.deploymentoptions
+D:\repos\Financials\Financials\obj\Production\Financials.smproj.CoreCompileInputs.cache
+D:\repos\Financials\Financials\obj\Production\Model.asdatabase
+D:\repos\Financials\Financials\obj\Production\Model.deploymentoptions
+D:\repos\Financials\Financials\obj\Production\Model.deploymenttargets

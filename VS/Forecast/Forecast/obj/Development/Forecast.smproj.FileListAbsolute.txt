@@ -1,0 +1,14 @@
+C:\Users\derek_a\source\repos\Forecast\Forecast\bin\Model.asdatabase
+C:\Users\derek_a\source\repos\Forecast\Forecast\bin\Model.deploymenttargets
+C:\Users\derek_a\source\repos\Forecast\Forecast\bin\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Forecast\Forecast\obj\Development\Forecast.smproj.CoreCompileInputs.cache
+C:\Users\derek_a\source\repos\Forecast\Forecast\obj\Development\Model.asdatabase
+C:\Users\derek_a\source\repos\Forecast\Forecast\obj\Development\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Forecast\Forecast\obj\Development\Model.deploymenttargets
+D:\repos\Forecast\Forecast\bin\Model.asdatabase
+D:\repos\Forecast\Forecast\bin\Model.deploymenttargets
+D:\repos\Forecast\Forecast\bin\Model.deploymentoptions
+D:\repos\Forecast\Forecast\obj\Development\Forecast.smproj.CoreCompileInputs.cache
+D:\repos\Forecast\Forecast\obj\Development\Model.asdatabase
+D:\repos\Forecast\Forecast\obj\Development\Model.deploymentoptions
+D:\repos\Forecast\Forecast\obj\Development\Model.deploymenttargets

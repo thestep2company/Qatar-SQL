@@ -1,0 +1,1025 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/29/2023 3:59:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{78AE3696-8441-4563-95F1-582B20FA140A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="PIM Product Master Export"
+  DTS:VersionGUID="{2D6B4094-9D4E-4759-98D2-9AFE43DF1F67}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A050C9D9-3D49-46EC-BC94-673CE5D630E3}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\derek_a\Documents\Projects\PIM\ProductMaster.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="40"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Item"
+              DTS:DTSID="{E26C5D93-0F67-4489-AAB5-C50E92B0B437}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Description"
+              DTS:DTSID="{AD4AF2D1-6951-4ED3-B7D4-AC541091546B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Item Type"
+              DTS:DTSID="{04C7500D-DDC3-4F5D-9F2C-0EECD9E1E963}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Item Status"
+              DTS:DTSID="{DC8D4AA9-9798-425C-8F52-DECDD0447473}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Long Description"
+              DTS:DTSID="{9F683392-44D6-47DD-9F6B-4E9E4B54FEF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WEIGHT_UOM_CODE"
+              DTS:DTSID="{417DB1F7-5EA4-41A3-B5DF-E53AA9B09834}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unit Weight"
+              DTS:DTSID="{E9FED90C-3E16-4EE7-B90B-500F6D865118}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="VOLUME_UOM_CODE"
+              DTS:DTSID="{273753AF-E8D6-499F-93B8-868A200CA81D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unit Volume"
+              DTS:DTSID="{B2F3746A-4F30-4917-87F6-9B8B2C5005E9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DIMENSION_UOM_CODE"
+              DTS:DTSID="{0FA0A8F0-111A-4ECE-B879-271D3B1BBA86}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unit Length"
+              DTS:DTSID="{A8BB3865-1082-489E-B243-9C066C65D00B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unit Width"
+              DTS:DTSID="{813C8B70-5ACA-4E7D-97F4-7EBFFF2033F1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="24"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Unit Height"
+              DTS:DTSID="{64416BD8-D8C5-4030-98DC-1A9D1DC91C4C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UPC"
+              DTS:DTSID="{DA90A5CE-1DD2-4D9E-936D-70022864F550}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Category"
+              DTS:DTSID="{EBA06D88-C851-40E7-AEA1-EC66164BAFA7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SubCategory"
+              DTS:DTSID="{8FC155EC-EFDF-4EF8-9169-773A88DBA9DB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Country of Origin"
+              DTS:DTSID="{59DCE299-8B2B-49C4-935B-C926DB0CD06B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SIOP Family"
+              DTS:DTSID="{1E35022F-F868-44F1-A3CF-D74D3CE36193}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x007C_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Brand"
+              DTS:DTSID="{62126C41-DF17-40EC-980A-062C66306969}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="240"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Part Class"
+              DTS:DTSID="{48BD6ABB-C5AC-4350-9A8A-B9D1D4509258}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E6C3DA62-0288-4F73-8A76-5099C52BAFA4}"
+      DTS:ObjectName="SourceConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{BB90C41A-7832-481E-93EA-EAC006411EB8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - ProductMaster_csv"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="1033"
+              name="Destination - ProductMaster_csv"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Item]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="Item"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Item Type]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Item Type"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item Type]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Item Status]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item Status"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item Status]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Long Description]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="Long Description"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Long Description]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Long Description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[WEIGHT_UOM_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="WEIGHT_UOM_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[WEIGHT_UOM_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[WEIGHT_UOM_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Unit Weight]"
+                      cachedDataType="r8"
+                      cachedName="Unit Weight"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Weight]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Weight]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[VOLUME_UOM_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="VOLUME_UOM_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[VOLUME_UOM_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[VOLUME_UOM_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Unit Volume]"
+                      cachedDataType="r8"
+                      cachedName="Unit Volume"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Volume]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Volume]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[DIMENSION_UOM_CODE]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="DIMENSION_UOM_CODE"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[DIMENSION_UOM_CODE]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[DIMENSION_UOM_CODE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Unit Length]"
+                      cachedDataType="r8"
+                      cachedName="Unit Length"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Length]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Length]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Unit Width]"
+                      cachedDataType="r8"
+                      cachedName="Unit Width"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Width]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Width]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Unit Height]"
+                      cachedDataType="r8"
+                      cachedName="Unit Height"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Height]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Height]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[UPC]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="UPC"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[UPC]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[UPC]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Category]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Category"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Category]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Category]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[SubCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="SubCategory"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[SubCategory]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SubCategory]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Country of Origin]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Country of Origin"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Country of Origin]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Country of Origin]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[SIOP Family]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="SIOP Family"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[SIOP Family]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SIOP Family]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Brand]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Brand"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Brand]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Brand]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].Columns[Part Class]"
+                      cachedDataType="wstr"
+                      cachedLength="240"
+                      cachedName="Part Class"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Part Class]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Part Class]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item]"
+                      dataType="wstr"
+                      length="40"
+                      name="Item" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="240"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item Type]"
+                      dataType="wstr"
+                      length="30"
+                      name="Item Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Item Status]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Long Description]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Long Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[WEIGHT_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="WEIGHT_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Weight]"
+                      dataType="r8"
+                      name="Unit Weight" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[VOLUME_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="VOLUME_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Volume]"
+                      dataType="r8"
+                      name="Unit Volume" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[DIMENSION_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="DIMENSION_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Length]"
+                      dataType="r8"
+                      name="Unit Length" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Width]"
+                      dataType="r8"
+                      name="Unit Width" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Unit Height]"
+                      dataType="r8"
+                      name="Unit Height" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UPC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="240"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="240"
+                      name="SubCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Country of Origin]"
+                      dataType="wstr"
+                      length="240"
+                      name="Country of Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[SIOP Family]"
+                      dataType="wstr"
+                      length="240"
+                      name="SIOP Family" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Brand]"
+                      dataType="wstr"
+                      length="240"
+                      name="Brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input].ExternalColumns[Part Class]"
+                      dataType="wstr"
+                      length="240"
+                      name="Part Class" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - PIM_ProductMaster"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source - PIM_ProductMaster"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OUTPUT].[PIM_ProductMaster]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item]"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item]"
+                      name="Item"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item Type]"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Type]"
+                      name="Item Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item Status]"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Item Status]"
+                      name="Item Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Long Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Long Description]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Long Description]"
+                      name="Long Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[WEIGHT_UOM_CODE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[WEIGHT_UOM_CODE]"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[WEIGHT_UOM_CODE]"
+                      name="WEIGHT_UOM_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Weight]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Weight]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Weight]"
+                      name="Unit Weight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[VOLUME_UOM_CODE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[VOLUME_UOM_CODE]"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[VOLUME_UOM_CODE]"
+                      name="VOLUME_UOM_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Volume]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Volume]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Volume]"
+                      name="Unit Volume"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[DIMENSION_UOM_CODE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[DIMENSION_UOM_CODE]"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[DIMENSION_UOM_CODE]"
+                      name="DIMENSION_UOM_CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Length]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Length]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Length]"
+                      name="Unit Length"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Width]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Width]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Width]"
+                      name="Unit Width"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Height]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Height]"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Unit Height]"
+                      name="Unit Height"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[UPC]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[UPC]"
+                      name="UPC"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Category]"
+                      name="Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SubCategory]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SubCategory]"
+                      name="SubCategory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Country of Origin]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Country of Origin]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Country of Origin]"
+                      name="Country of Origin"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SIOP Family]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[SIOP Family]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[SIOP Family]"
+                      name="SIOP Family"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Brand]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Brand]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Brand]"
+                      name="Brand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Part Class]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Part Class]"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].Columns[Part Class]"
+                      name="Part Class"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item]"
+                      dataType="wstr"
+                      length="40"
+                      name="Item" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="240"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item Type]"
+                      dataType="wstr"
+                      length="30"
+                      name="Item Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Item Status]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item Status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Long Description]"
+                      dataType="wstr"
+                      length="4000"
+                      name="Long Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[WEIGHT_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="WEIGHT_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Weight]"
+                      dataType="r8"
+                      name="Unit Weight" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[VOLUME_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="VOLUME_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Volume]"
+                      dataType="r8"
+                      name="Unit Volume" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[DIMENSION_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      name="DIMENSION_UOM_CODE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Length]"
+                      dataType="r8"
+                      name="Unit Length" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Width]"
+                      dataType="r8"
+                      name="Unit Width" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Unit Height]"
+                      dataType="r8"
+                      name="Unit Height" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      name="UPC" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                      dataType="wstr"
+                      length="240"
+                      name="Category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                      dataType="wstr"
+                      length="240"
+                      name="SubCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Country of Origin]"
+                      dataType="wstr"
+                      length="240"
+                      name="Country of Origin" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[SIOP Family]"
+                      dataType="wstr"
+                      length="240"
+                      name="SIOP Family" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Brand]"
+                      dataType="wstr"
+                      length="240"
+                      name="Brand" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output].ExternalColumns[Part Class]"
+                      dataType="wstr"
+                      length="240"
+                      name="Part Class" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item]"
+                      name="Item" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item Type]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item Type]"
+                      name="Item Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item Status]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Item Status]"
+                      name="Item Status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Long Description]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Long Description]"
+                      name="Long Description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[WEIGHT_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[WEIGHT_UOM_CODE]"
+                      name="WEIGHT_UOM_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Weight]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Weight]"
+                      name="Unit Weight" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[VOLUME_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[VOLUME_UOM_CODE]"
+                      name="VOLUME_UOM_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Volume]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Volume]"
+                      name="Unit Volume" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[DIMENSION_UOM_CODE]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[DIMENSION_UOM_CODE]"
+                      name="DIMENSION_UOM_CODE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Length]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Length]"
+                      name="Unit Length" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Width]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Width]"
+                      name="Unit Width" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Height]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Unit Height]"
+                      name="Unit Height" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[UPC]"
+                      name="UPC" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Category]"
+                      name="Category" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[SubCategory]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[SubCategory]"
+                      name="SubCategory" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Country of Origin]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Country of Origin]"
+                      name="Country of Origin" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[SIOP Family]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[SIOP Family]"
+                      name="SIOP Family" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Brand]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Brand]"
+                      name="Brand" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Part Class]"
+                      dataType="wstr"
+                      length="240"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[Part Class]"
+                      name="Part Class" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task 1\Destination - ProductMaster_csv.Inputs[Flat File Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task 1\Source - PIM_ProductMaster.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

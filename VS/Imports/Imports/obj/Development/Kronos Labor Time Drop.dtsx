@@ -1,0 +1,2141 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/12/2021 3:52:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{80E689E6-C9BF-40CA-94D5-82B3FE403B8A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="IMAP Import"
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{FBBF7021-0018-4C5B-832B-FED4C07A83ED}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{41F8A018-7AD0-4D31-B9D1-0C9E66EEC348}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[QATAR.Operations]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{EA0ACC23-0585-4708-8337-3FEFF751738A}"
+      DTS:ObjectName="QATAR.Operations">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=Operations;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[QATAR.OperationsLive]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{76784096-6DCA-46CF-821C-34B84CEB8C5E}"
+      DTS:ObjectName="QATAR.OperationsLive">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=QATAR;Initial Catalog=OperationsLive;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{AC0DC578-85E1-42E7-9A21-DFA23B5FA104}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::FileNamePath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowsToSkip="8"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:AlwaysCheckForRowDelimiters="False"
+          DTS:ConnectionString="\\step2file\financial_shrd\SQL Import\Labor\Time\">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee ID"
+              DTS:DTSID="{D9891EE8-3E0A-41DA-A4E4-6B52FD069587}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Full Name"
+              DTS:DTSID="{6C4A4EDE-155A-430C-8969-4F0F30C62C93}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Payroll File Number"
+              DTS:DTSID="{B71A750E-18AB-44C1-ADA0-31C24B464434}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Employee Pay Rule"
+              DTS:DTSID="{39D7CB8D-6B88-48FA-B38F-D7D50B154A37}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Hourly Wage Rate"
+              DTS:DTSID="{878B2A96-5D10-4489-9447-211D7C099398}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Location (Path)"
+              DTS:DTSID="{FDCC018E-D186-45A1-9A9A-FB5B515BB11C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Primary Job"
+              DTS:DTSID="{47F6BAA6-55B7-4620-AF50-EEBF15E55ADF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Home Labor Category"
+              DTS:DTSID="{9E78E958-2A65-485E-ACD7-62D09A051756}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Job Name - Full Path (Worked)"
+              DTS:DTSID="{FABF37B0-5ECB-434A-8C43-3B37290417B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Actual Total Job Transfer Indicator"
+              DTS:DTSID="{AFEAA66D-4EE4-49BB-820C-05C0B310365B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Paycode Type"
+              DTS:DTSID="{FBDB2AC7-6318-4F07-BF0C-669787DBFE4C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Paycode Name"
+              DTS:DTSID="{71D2B17D-533F-4322-A1A8-177B4C960A8A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Actual Total Apply Date"
+              DTS:DTSID="{677C34D0-0E1C-474B-B1E7-696E4CA2BA7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Actual Total Hours (Include Corrections)"
+              DTS:DTSID="{EB2F96AB-335A-4CC8-8A5B-2F07047DC17A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Actual Total Wages (Include Corrections)"
+              DTS:DTSID="{6F29CF9F-2E20-48E3-B816-AF2444FA7F1F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Labor Category Name (Path)"
+              DTS:DTSID="{6B17F8FD-8C46-428C-A9D9-FC98FFAF7D85}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{36224BD3-EB83-4E72-9F68-14DBD96D1DFD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::SourceFolder] + &quot;Processed\\&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ArchiveFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\step2file\financial_shrd\SQL Import\Labor\Time\Processed\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F459A116-4575-4F99-BA8C-444279B0E1DB}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::ArchiveFolder] + Replace(Replace(Replace(Replace( @[User::FileName],&quot;.&quot;,&quot;_&quot;+Substring((DT_WSTR,50) GETDATE(),1,19)+&quot;.&quot;),&quot;-&quot;,&quot;&quot;),&quot;:&quot;,&quot;&quot;),&quot; &quot;,&quot;_&quot;)"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ArchivePath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\step2file\financial_shrd\SQL Import\Labor\Time\Processed\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{943D5A32-175B-4A27-AF53-F24CBE5ACEB5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{934E4B13-AEC6-4F36-B5E9-23354723249F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C9073373-415C-464D-ACA2-6A194D1DAA3C}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[User::SourceFolder] +  @[User::FileName]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileNamePath">
+      <DTS:VariableValue
+        DTS:DataType="8">\\step2file\financial_shrd\SQL Import\Labor\Time\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D771BF17-8626-423F-86E6-1F41A86E880A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D38788E-CA87-4376-82AC-3B19A0B2C216}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SourceFolder">
+      <DTS:VariableValue
+        DTS:DataType="8">\\step2file\financial_shrd\SQL Import\Labor\Time\</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{5C9DF4FE-A450-4FC3-99BB-34EF4DD40581}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{317BE547-D436-4EA7-B958-88613E348AC4}"
+        DTS:ObjectName="{317BE547-D436-4EA7-B958-88613E348AC4}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="\\step2file\financial_shrd\SQL Import\Labor\Time\" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="1" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Data Flow Task 1"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DTSID="{63972e47-03c7-42b8-8968-dda1cf5794c9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task 1"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              defaultBufferSize="3145728"
+              version="1">
+              <components>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Employee ID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Employee ID"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee ID]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Employee Full Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Employee Full Name"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Full Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Employee Pay Rule]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Employee Pay Rule"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Pay Rule]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Hourly Wage Rate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Hourly Wage Rate"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Hourly Wage Rate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Primary Location (Path)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Primary Location (Path)"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Location (Path)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Primary Job]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Primary Job"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Job]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Home Labor Category]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Home Labor Category"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Home Labor Category]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Job Name - Full Path (Worked)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Job Name - Full Path (Worked)"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Job Name - Full Path (Worked)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Actual Total Job Transfer Indicator]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Actual Total Job Transfer Indicator"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Job Transfer Indicator]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Paycode Type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Paycode Type"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Type]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Actual Total Apply Date]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Actual Total Apply Date"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Apply Date]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Actual Total Hours (Include Corrections)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Actual Total Hours (Include Corrections)"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Hours (Include Corrections)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Actual Total Wages (Include Corrections)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Actual Total Wages (Include Corrections)"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Wages (Include Corrections)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Labor Category Name (Path)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Labor Category Name (Path)"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Labor Category Name (Path)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Payroll File Number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Payroll File Number"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Payroll File Number]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input].Columns[Paycode Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Paycode Name"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Name]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]"
+                          name="Copy of Employee ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee ID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Full Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Full Name]"
+                          name="Copy of Employee Full Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Full Name]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Pay Rule]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Pay Rule]"
+                          name="Copy of Employee Pay Rule"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Pay Rule]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hourly Wage Rate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hourly Wage Rate]"
+                          name="Copy of Hourly Wage Rate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Hourly Wage Rate]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Location (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Location (Path)]"
+                          name="Copy of Primary Location (Path)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Location (Path)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Job]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Job]"
+                          name="Copy of Primary Job"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Job]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Home Labor Category]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Home Labor Category]"
+                          name="Copy of Home Labor Category"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Home Labor Category]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Job Name - Full Path (Worked)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Job Name - Full Path (Worked)]"
+                          name="Copy of Job Name - Full Path (Worked)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Job Name - Full Path (Worked)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Job Transfer Indicator]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Job Transfer Indicator]"
+                          name="Copy of Actual Total Job Transfer Indicator"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Job Transfer Indicator]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Type]"
+                          name="Copy of Paycode Type"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Type]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Apply Date]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Apply Date]"
+                          name="Copy of Actual Total Apply Date"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Apply Date]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Hours (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Hours (Include Corrections)]"
+                          name="Copy of Actual Total Hours (Include Corrections)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Hours (Include Corrections)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Wages (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Wages (Include Corrections)]"
+                          name="Copy of Actual Total Wages (Include Corrections)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Wages (Include Corrections)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Labor Category Name (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Labor Category Name (Path)]"
+                          name="Copy of Labor Category Name (Path)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Labor Category Name (Path)]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Payroll File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Payroll File Number]"
+                          name="Copy of Payroll File Number"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Payroll File Number]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Name]"
+                          name="Copy of Paycode Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Name]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1033"
+                  name="Source - Employee Hours by Worked Acct Daily_csv"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee ID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee ID]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee ID]"
+                          name="Employee ID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Full Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee Full Name]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Full Name]"
+                          name="Employee Full Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Pay Rule]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee Pay Rule]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Employee Pay Rule]"
+                          name="Employee Pay Rule"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Hourly Wage Rate]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Hourly Wage Rate]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Hourly Wage Rate]"
+                          name="Hourly Wage Rate"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Location (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Primary Location (Path)]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Location (Path)]"
+                          name="Primary Location (Path)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Job]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Primary Job]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Primary Job]"
+                          name="Primary Job"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Home Labor Category]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Home Labor Category]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Home Labor Category]"
+                          name="Home Labor Category"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Job Name - Full Path (Worked)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Job Name - Full Path (Worked)]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Job Name - Full Path (Worked)]"
+                          name="Job Name - Full Path (Worked)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Job Transfer Indicator]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Job Transfer Indicator]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Job Transfer Indicator]"
+                          name="Actual Total Job Transfer Indicator"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Type]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Paycode Type]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Type]"
+                          name="Paycode Type"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Name]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Paycode Name]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Paycode Name]"
+                          name="Paycode Name"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Apply Date]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Apply Date]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Apply Date]"
+                          name="Actual Total Apply Date"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Hours (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Hours (Include Corrections)]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Hours (Include Corrections)]"
+                          name="Actual Total Hours (Include Corrections)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Wages (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Wages (Include Corrections)]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Wages (Include Corrections)]"
+                          name="Actual Total Wages (Include Corrections)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Labor Category Name (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Labor Category Name (Path)]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Labor Category Name (Path)]"
+                          name="Labor Category Name (Path)"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Payroll File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Payroll File Number]"
+                          length="250"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Payroll File Number]"
+                          name="Payroll File Number"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee ID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee Full Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee Full Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Employee Pay Rule]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee Pay Rule" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Hourly Wage Rate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Hourly Wage Rate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Primary Location (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Primary Location (Path)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Primary Job]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Primary Job" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Home Labor Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Home Labor Category" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Job Name - Full Path (Worked)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Job Name - Full Path (Worked)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Job Transfer Indicator]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Job Transfer Indicator" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Paycode Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Paycode Type" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Paycode Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Paycode Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Apply Date]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Apply Date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Hours (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Hours (Include Corrections)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Actual Total Wages (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Wages (Include Corrections)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Labor Category Name (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Labor Category Name (Path)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].ExternalColumns[Payroll File Number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Payroll File Number" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination"
+                  componentClassID="Microsoft.SQLServerDestination"
+                  contactInfo="SQL Server Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+                  description="SQL Server Destination"
+                  name="SQL Server Destination"
+                  version="5">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.String"
+                      description="The name of the database object to copy data into."
+                      expressionType="Notify"
+                      name="BulkInsertTableName">[Kronos].[Employee Hours by Worked Acct Daily]</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any constraints on the destination object are checked during the data copy operation. Corresponds to the bulk insert CHECK_CONSTRAINTS option."
+                      name="BulkInsertCheckConstraints">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the first row to copy. Corresponds to the bulk insert FIRSTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertFirstRow">-1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that any insert triggers defined on the destination object will execute during the data copy. Corresponds to the bulk insert FIRE_TRIGGERS option."
+                      name="BulkInsertFireTriggers">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Corresponds to the bulk insert KEEPIDENTITY option."
+                      name="BulkInsertKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null copied to the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="BulkInsertKeepNulls">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of the last row to copy. Corresponds to the bulk insert LASTROW option."
+                      expressionType="Notify"
+                      name="BulkInsertLastRow">-1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of syntax errors and compilation errors that can occur before the data copy operation is canceled. Each row that cannot be copied is ignored and counted as one error. Corresponds to the bulk insert MAXERRORS option."
+                      name="BulkInsertMaxErrors">-1</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies how the data to be copied is sorted. Corresponds to the bulk insert ORDER option."
+                      expressionType="Notify"
+                      name="BulkInsertOrder"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies that a table-level lock is acquired for the duration of the data copy operation. Corresponds to the bulk insert TABLOCK option."
+                      name="BulkInsertTablock">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies in seconds the amount of time the SQL Destination adapter will wait before terminating if there is no data available for insertion.  A timeout value of 0 means the SQL Destination adapter will not time out."
+                      expressionType="Notify"
+                      name="Timeout">30</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion."
+                      name="MaxInsertCommitSize">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input]"
+                      hasSideEffects="true"
+                      name="SQL Server Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Employee Full Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Employee Full Name"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Full Name]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Full Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Employee Pay Rule]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Employee Pay Rule"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Pay Rule]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee Pay Rule]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Hourly Wage Rate]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Hourly Wage Rate"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Hourly Wage Rate]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Hourly Wage Rate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Primary Location (Path)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Primary Location (Path)"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Primary Location (Path)]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Location (Path)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Primary Job]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Primary Job"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Primary Job]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Primary Job]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Home Labor Category]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Home Labor Category"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Home Labor Category]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Home Labor Category]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Job Name - Full Path (Worked)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Job Name - Full Path (Worked)"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Job Name - Full Path (Worked)]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Job Name - Full Path (Worked)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Actual Total Job Transfer Indicator]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Actual Total Job Transfer Indicator"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Job Transfer Indicator]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Job Transfer Indicator]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Paycode Type]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Paycode Type"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Paycode Type]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Type]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Paycode Name]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Paycode Name"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Paycode Name]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Paycode Name]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Actual Total Apply Date]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Actual Total Apply Date"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Apply Date]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Apply Date]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Actual Total Hours (Include Corrections)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Actual Total Hours (Include Corrections)"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Hours (Include Corrections)]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output].Columns[Actual Total Hours (Include Corrections)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Actual Total Wages (Include Corrections)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Actual Total Wages (Include Corrections)"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Wages (Include Corrections)]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Actual Total Wages (Include Corrections)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Labor Category Name (Path)]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Labor Category Name (Path)"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Labor Category Name (Path)]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Labor Category Name (Path)]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Payroll File Number]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Payroll File Number"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Number]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Payroll File Number]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].Columns[Copy of Employee ID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="Copy of Employee ID"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee ID]"
+                          lineageId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Employee ID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[ID]"
+                          dataType="i4"
+                          name="ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee ID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee ID" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Number]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee Number" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Full Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee Full Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Employee Pay Rule]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Employee Pay Rule" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Hourly Wage Rate]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Hourly Wage Rate" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Primary Location (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Primary Location (Path)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Primary Job]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Primary Job" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Home Labor Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Home Labor Category" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Job Name - Full Path (Worked)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Job Name - Full Path (Worked)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Job Transfer Indicator]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Job Transfer Indicator" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Paycode Type]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Paycode Type" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Paycode Name]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Paycode Name" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Apply Date]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Apply Date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Hours (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Hours (Include Corrections)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Actual Total Wages (Include Corrections)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Actual Total Wages (Include Corrections)" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input].ExternalColumns[Labor Category Name (Path)]"
+                          codePage="1252"
+                          dataType="str"
+                          length="250"
+                          name="Labor Category Name (Path)" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Foreach Loop Container\Data Flow Task 1.Paths[Data Conversion Output]"
+                  endId="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination.Inputs[SQL Server Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Foreach Loop Container\Data Flow Task 1.Paths[Flat File Source Output]"
+                  endId="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Delete"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{F8E054F6-22DE-4148-90D9-7FBB0444FFCB}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Delete"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="DeleteFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::FileNamePath"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::ArchivePath"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Merge"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{EE79C6EF-51E5-4DA5-B5F5-EC3DB25F118F}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Merge"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{41F8A018-7AD0-4D31-B9D1-0C9E66EEC348}"
+              SQLTask:SqlStatementSource="EXEC [Kronos].[Merge_EmployeeHoursFileDrop]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Persist"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1ad87ae9-a4aa-4276-9cb6-211e273ddbdd}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Persist"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{41F8A018-7AD0-4D31-B9D1-0C9E66EEC348}"
+              SQLTask:SqlStatementSource="EXEC dbo.PersistLaborData" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Process Full"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Process Full"
+          DTS:DTSID="{DC416362-3087-4824-BCD9-FD68D3823C7F}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Full"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="QATAR.Operations"
+              ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Operations&quot;,&#xA;              &quot;table&quot;: &quot;Department&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Operations&quot;,&#xA;              &quot;table&quot;: &quot;Paycode&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Operations&quot;,&#xA;              &quot;table&quot;: &quot;Labor Category&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Operations&quot;,&#xA;              &quot;table&quot;: &quot;Labor&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Process Live"
+          DTS:CreationName="Microsoft.DTSProcessingTask"
+          DTS:Description="Analysis Services Processing Task"
+          DTS:DTSID="{1B638087-397B-4AB3-9362-D3DD7F6D4126}"
+          DTS:ExecutableType="Microsoft.DTSProcessingTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Process Live"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ASProcessingData
+              ConnectionName="QATAR.OperationsLive"
+              ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Department&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Paycode&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Labor Category&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Labor&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\Truncate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:DTSID="{9bfebc37-5da7-4010-80bf-892d50f3e2a0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{41F8A018-7AD0-4D31-B9D1-0C9E66EEC348}"
+              SQLTask:SqlStatementSource="TRUNCATE TABLE [Kronos].[Employee Hours by Worked Acct Daily]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C75C9C2C-AA62-4524-A868-7E371086C057}"
+          DTS:From="Package\Foreach Loop Container\Process Full"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Foreach Loop Container\Truncate" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{69D16387-EDA0-456E-A57C-1360F2B3D1E8}"
+          DTS:From="Package\Foreach Loop Container\Delete"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Foreach Loop Container\Merge" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{786AF0E3-1C18-4856-9CFF-5B5293FFA620}"
+          DTS:From="Package\Foreach Loop Container\Merge"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Foreach Loop Container\Persist" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{C18F04A5-9182-4713-9633-4BF6362EEB2E}"
+          DTS:From="Package\Foreach Loop Container\Process Live"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Foreach Loop Container\Process Full" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{F0DA2F28-D8AC-4CD2-A212-545FCD681F84}"
+          DTS:From="Package\Foreach Loop Container\Data Flow Task 1"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Foreach Loop Container\Delete" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{83F25A04-05CB-4E8D-AE99-DF0587E9519B}"
+          DTS:From="Package\Foreach Loop Container\Persist"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Foreach Loop Container\Process Live" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{361ED1DE-B451-4945-B0E8-351D4EF90416}"
+          DTS:ObjectName="{361ED1DE-B451-4945-B0E8-351D4EF90416}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Foreach Loop Container\Data Flow Task 1"
+          TopLeft="55,23.7058819561269" />
+        <NodeLayout
+          Size="108.8,41.6"
+          Id="Package\Foreach Loop Container\Delete"
+          TopLeft="82.4285714528999,100.941176063049" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Foreach Loop Container\Merge"
+          TopLeft="54,178.941176063049" />
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Foreach Loop Container\Process Full"
+          TopLeft="66.2857144438491,403.470588578485" />
+        <NodeLayout
+          Size="144,41.6"
+          Id="Package\Foreach Loop Container\Process Live"
+          TopLeft="59.5714285471001,321.058823936951" />
+        <NodeLayout
+          Size="120.8,41.6"
+          Id="Package\Foreach Loop Container\Truncate"
+          TopLeft="79.2857143586995,499.705882867727" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="136.585714401274,445.070588578485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.6352942892426"
+              Start="0,0"
+              End="0,47.1352942892426">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1352942892426" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="136.21428572645,142.541176063049">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.3999999999999"
+              Start="0,0"
+              End="0,28.8999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="132.528571495475,362.658823936951">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.811764641534"
+              Start="0,0"
+              End="0,33.311764641534">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.311764641534" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="135.91428572645,65.3058819561269">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.6352941069223"
+              Start="0,0"
+              End="0,28.1352941069223">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.1352941069223" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="109.6,41.6"
+          Id="Package\Foreach Loop Container\Persist"
+          TopLeft="79.542860159582,256.317649879423" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="134.971430079791,220.541176063049">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.7764738163735"
+              Start="0,0"
+              End="0,28.2764738163735">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.2764738163735" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container.PrecedenceConstraints[Constraint 5]"
+          TopLeft="132.957144353341,297.917649879423">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.1411740575282"
+              Start="0,0"
+              End="0,15.6411740575282">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.6411740575282" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="328,596"
+          Size="328,639.2"
+          Id="Package\Foreach Loop Container"
+          TopLeft="98,23" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[QATAR.Operations]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[QATAR.OperationsLive]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <TaskHost
+    design-time-name="Package\Foreach Loop Container\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination"
+          TopLeft="90,187" />
+        <NodeLayout
+          Size="322,42"
+          Id="Package\Foreach Loop Container\Data Flow Task 1\Source - Employee Hours by Worked Acct Daily_csv"
+          TopLeft="4.5,11.5" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Foreach Loop Container\Data Flow Task 1\Data Conversion"
+          TopLeft="108,86" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task 1.Paths[Data Conversion Output]"
+          TopLeft="185,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Data Flow Task 1.Paths[Flat File Source Output]"
+          TopLeft="165.5,53.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5,32.5"
+              Start="0,0"
+              End="20.5,25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.25"
+                    Point2="0,16.25"
+                    Point3="4,16.25" />
+                  <mssgle:LineSegment
+                    End="16.5,16.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,16.25"
+                    Point2="20.5,16.25"
+                    Point3="20.5,20.25" />
+                  <mssgle:LineSegment
+                    End="20.5,25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Data Flow Task 1\SQL Server Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

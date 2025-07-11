@@ -1,0 +1,688 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/22/2021 10:21:02 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{A928E242-F382-438D-9832-A337E66565B9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Inventory Import Package"
+  DTS:VersionGUID="{9A47B5EF-1665-4740-A54A-2F1A6C810215}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D07819BB-3A92-4D77-935C-CF6B6C3F8F8B}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=qatar;Initial Catalog=Operations;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{10C704D4-8B3D-4251-B68F-A58153E30DAE}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\derek_a\Documents\Projects\Inventory\History\Excel\Inv 2020-02-07.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{039DF863-7FE4-4DFF-B216-9BB26DA9CCAE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Data Conversion 0 - 0"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion 0 - 0"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input].Columns[Value]"
+                      cachedDataType="cy"
+                      cachedName="Value"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Value]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Value]"
+                      name="Value"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination - InventoryHistory"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - InventoryHistory"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Import].[InventoryHistory]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - InventoryHistory.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Organization Code]"
+                      cachedDataType="r8"
+                      cachedName="Organization Code"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Organization Code]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Organization Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Organization Name"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Organization Name]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Subinventory Code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Subinventory Code"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Subinventory Code]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Subinventory Code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Part Location]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Part Location"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Location]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Location]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Part Number]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Part Number"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Number]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Part Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Part Description"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Description]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Part Class]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Part Class"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Class]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Class]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Item Cost]"
+                      cachedDataType="r8"
+                      cachedName="Item Cost"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Item Cost]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Cost]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Item Category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Item Category"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Item Category]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Category]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].Columns[Value]"
+                      cachedDataType="r8"
+                      cachedName="Value"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output].Columns[Value]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Organization Code]"
+                      dataType="r8"
+                      name="Organization Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Organization Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Organization Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Subinventory Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subinventory Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Part Class]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Class" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Item Cost]"
+                      dataType="r8"
+                      name="Item Cost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Item Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Item Category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[Value]"
+                      dataType="r8"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[InventoryDate]"
+                      dataType="dbDate"
+                      name="InventoryDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input].ExternalColumns[SourceFile]"
+                      dataType="wstr"
+                      length="255"
+                      name="SourceFile" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - InventoryHistory.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - InventoryHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - InventoryHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - InventoryHistory.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - FNDWRR$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - FNDWRR$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">FNDWRR$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - FNDWRR$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Code]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Organization Code]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Code]"
+                      name="Organization Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Organization Name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Organization Name]"
+                      name="Organization Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Subinventory Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Subinventory Code]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Subinventory Code]"
+                      name="Subinventory Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Location]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Location]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Location]"
+                      name="Part Location"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Number]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Number]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Number]"
+                      name="Part Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Description]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Description]"
+                      name="Part Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Class]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Class]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Part Class]"
+                      name="Part Class"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Cost]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Item Cost]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Cost]"
+                      name="Item Cost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Item Category]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Item Category]"
+                      name="Item Category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Value]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Value]"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].Columns[Value]"
+                      name="Value"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Organization Code]"
+                      dataType="r8"
+                      name="Organization Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Organization Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Organization Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Subinventory Code]"
+                      dataType="wstr"
+                      length="255"
+                      name="Subinventory Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Location]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Location" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Number]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Part Class]"
+                      dataType="wstr"
+                      length="255"
+                      name="Part Class" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Item Cost]"
+                      dataType="r8"
+                      name="Item Cost" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Item Category]"
+                      dataType="wstr"
+                      length="255"
+                      name="Item Category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output].ExternalColumns[Value]"
+                      dataType="cy"
+                      name="Value" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Organization Code]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Organization Code]"
+                      name="Organization Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Organization Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Organization Name]"
+                      name="Organization Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Subinventory Code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Subinventory Code]"
+                      name="Subinventory Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Location]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Location]"
+                      name="Part Location" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Number]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Number]"
+                      name="Part Number" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Description]"
+                      name="Part Description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Class]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Part Class]"
+                      name="Part Class" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Item Cost]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Item Cost]"
+                      name="Item Cost" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Item Category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Item Category]"
+                      name="Item Category" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Value]"
+                      dataType="cy"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[Value]"
+                      name="Value" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task 1\Destination - InventoryHistory.Inputs[Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task 1\Data Conversion 0 - 0.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Data Conversion 0 - 0.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - FNDWRR$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>

@@ -1,0 +1,7 @@
+C:\Users\derek_a\source\repos\Sales\Sales\bin\Production\Model.asdatabase
+C:\Users\derek_a\source\repos\Sales\Sales\bin\Production\Model.deploymenttargets
+C:\Users\derek_a\source\repos\Sales\Sales\bin\Production\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Sales\Sales\obj\Production\Sales.smproj.CoreCompileInputs.cache
+C:\Users\derek_a\source\repos\Sales\Sales\obj\Production\Model.asdatabase
+C:\Users\derek_a\source\repos\Sales\Sales\obj\Production\Model.deploymentoptions
+C:\Users\derek_a\source\repos\Sales\Sales\obj\Production\Model.deploymenttargets

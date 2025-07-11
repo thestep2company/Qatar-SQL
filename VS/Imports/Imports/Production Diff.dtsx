@@ -1,0 +1,497 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2022 9:25:17 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="1273DELL7530"
+  DTS:CreatorName="STEP2\derek_a"
+  DTS:DTSID="{14E8D387-B03A-4AB1-890F-2990231B7338}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.152"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{A701F44A-1310-4B3F-8CC8-B5B974EBECBC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[qatar.Operations]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+      DTS:ObjectName="qatar.Operations">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=qatar;Initial Catalog=Operations;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[qatar.OperationsLive]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{DAC3C05E-D7FB-41E1-AAC4-FF6B66566077}"
+      DTS:ObjectName="qatar.OperationsLive">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=qatar;Initial Catalog=OperationsLive;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[qatar.SSISDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B4DB6FDC-680A-495B-A88B-69A22DFE376E}"
+      DTS:ObjectName="qatar.SSISDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=qatar;Initial Catalog=SSISDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Change Logging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F0FF247B-689D-4340-8FBB-9BDB565D0702}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Change Logging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+          SQLTask:SqlStatementSource="EXEC Diff.Machine_IndexChangeLogging" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Change Records"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2515E670-90AA-4447-8213-B8AE79A0CF03}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Change Records"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+          SQLTask:SqlStatementSource="EXEC Diff.Machine_IndexChangeRecords" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DOR"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Execute Package Task"
+      DTS:DTSID="{35D23A54-4D18-45CA-80CC-0F96015A12B9}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DOR"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <ExecuteOutOfProcess>True</ExecuteOutOfProcess>
+          <PackageName>DOR Import.dtsx</PackageName>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Machine_Index"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Machine_Index"
+      DTS:DTSID="{B027D5FE-7D94-49CE-9C35-1716D39792AC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Machine_Index"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+          SQLTask:SqlStatementSource="EXEC Manufacturing.Update_MACHINE_INDEX&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Calcs"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{66D4C524-B568-4510-8A56-ED6AD1A9F71C}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Calcs"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="qatar.OperationsLive"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Calculated Measures&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Cycle Time"
+      DTS:CreationName="Microsoft.ASExecuteDDLTask"
+      DTS:Description="Analysis Services Execute DDL Task"
+      DTS:DTSID="{6964DC14-F080-4FD9-A7A7-1102CA938CB5}"
+      DTS:ExecutableType="Microsoft.ASExecuteDDLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Cycle Time"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASDdlData
+          ConnectionName="qatar.OperationsLive"
+          SourceType="DirectInput"
+          Source="{&#xA;&quot;refresh&quot;:{&#xA;&#x9;&quot;type&quot;:&quot;add&quot;,&#xA;&#x9;&quot;objects&quot;:[&#xA;&#x9;{&#xA;&#x9;&#x9;&quot;database&quot;:&quot;OperationsLive&quot;,&#xA;&#x9;&#x9;&quot;table&quot;:&quot;Cycle Time&quot;,&#xA;&#x9;&#x9;&quot;partition&quot;:&quot;Partition&quot;&#xA;&#x9;}&#xA;&#x9;],&#xA;&#xA;&#x9;&quot;overrides&quot;:[&#xA;&#x9;{&#xA;&#xA;&#x9;&quot;partitions&quot;: [// Bindings for Partitions&#xA;&#x9;{&#xA;&#x9;&#x9;&quot;originalObject&quot;:{&#xA;&#x9;&#x9;&#x9;&quot;database&quot;:&quot;OperationsLive&quot;,&#xA;&#x9;&#x9;&#x9;&quot;table&quot;:&quot;Cycle Time&quot;,&#xA;&#x9;&#x9;&#x9;&quot;partition&quot;:&quot;Partition&quot;&#xA;&#x9;&#x9;},&#xA;&#x9;&quot;source&quot;:{&#xA;&#x9;&#x9;&quot;type&quot;:&quot;m&quot;,&#xA;&#x9;&#x9;&quot;expression&quot;:[&#xA;&#x9;&#x9;&#x9;&quot;let&quot;,&#xA;&#x9;&#x9;&#x9;&quot;    Source = #\&quot;SQL/ ;Operations\&quot;,&quot;,&#xA;&#x9;&#x9;&#x9;&quot;    Fact_CycleTime = Source{[Schema=\&quot;Fact\&quot;,Item=\&quot;CycleTimeChangeRecords\&quot;]}[Data],&quot;,&#xA;&#x9;&#x9;&#x9;&quot;    #\&quot;Filtered Rows\&quot; = Table.SelectRows(Fact_CycleTime, each 1=1)&quot;,&#xA;&#x9;&#x9;&#x9;&quot;in&quot;,&#xA;&#x9;&#x9;&quot;    #\&quot;Filtered Rows\&quot;&quot;&#xA;&#x9;&#x9;]&#xA;&#x9;}&#xA;}&#xA;]&#xA;}&#xA;]&#xA;}&#xA;}&#xA;" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Goal"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{02F25DD3-4EBA-4031-8527-4F1EF59D1E59}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Goal"
+      DTS:ThreadHint="5">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="qatar.OperationsLive"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Goal&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Production"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{C7FA43C0-2493-47FB-8D7A-E10D115FF6B8}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Production"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="qatar.OperationsLive"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Production&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Scrap"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{60123561-3A2C-40E4-BC9F-B5B22BC230F2}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Scrap"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="qatar.OperationsLive"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Scrap&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Process Shift Controls"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{04BA9D11-8EBE-4218-811A-6E3902D8D08D}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Process Shift Controls"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="qatar.OperationsLive"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Shift Hours&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;full&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;OperationsLive&quot;,&#xA;              &quot;table&quot;: &quot;Shift Control&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Production"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Production"
+      DTS:DTSID="{AF45188C-D167-46E4-AA25-38C849D770FA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Production"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+          SQLTask:SqlStatementSource="EXEC Manufacturing.Update_Production" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Scrap"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Scrap"
+      DTS:DTSID="{569C86A5-0A6B-4595-9A38-E25187F780D9}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Scrap"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4355F84D-2FDC-49FD-AB52-ED780194D347}"
+          SQLTask:SqlStatementSource="EXEC Manufacturing.Update_ScrapQuery" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{83CA3B0C-0DED-4B45-9BA0-249446207BA4}"
+      DTS:From="Package\Machine_Index"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Change Records" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F6D36B26-97FD-492B-A0D1-599D176210F1}"
+      DTS:From="Package\Scrap"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Process Scrap" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{55040B59-8945-4E61-8748-F80966F12612}"
+      DTS:From="Package\Production"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Process Production" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{35EF830C-ABFB-4E8B-B9DA-756D8CBF6722}"
+      DTS:From="Package\Change Records"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Process Cycle Time" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{BFB77BA5-13C2-4B3C-A8B3-74A65C9E35EE}"
+      DTS:From="Package\Process Cycle Time"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Change Logging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Change Logging"
+          TopLeft="561,386" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Change Records"
+          TopLeft="551,215" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\DOR"
+          TopLeft="2,134" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Machine_Index"
+          TopLeft="547,133" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Process Calcs"
+          TopLeft="447,48" />
+        <NodeLayout
+          Size="247,42"
+          Id="Package\Process Cycle Time"
+          TopLeft="540,300" />
+        <NodeLayout
+          Size="141,42"
+          Id="Package\Process Goal"
+          TopLeft="254,51" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Process Production"
+          TopLeft="202,211" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Process Scrap"
+          TopLeft="399,220" />
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Process Shift Controls"
+          TopLeft="21.5,51.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Production"
+          TopLeft="200,135" />
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Scrap"
+          TopLeft="406,135" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="628.5,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="461.25,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="283.75,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="628.5,257">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35,43"
+              Start="0,0"
+              End="35,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="31,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31,21.5"
+                    Point2="35,21.5"
+                    Point3="35,25.5" />
+                  <mssgle:LineSegment
+                    End="35,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="663.5,342">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21,44"
+              Start="0,0"
+              End="-21,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="-4,22" />
+                  <mssgle:LineSegment
+                    End="-17,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17,22"
+                    Point2="-21,22"
+                    Point3="-21,26" />
+                  <mssgle:LineSegment
+                    End="-21,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[qatar.OperationsLive]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
